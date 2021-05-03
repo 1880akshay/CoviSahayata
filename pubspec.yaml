@@ -32,6 +32,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  double_back_to_close: ^2.0.0
+  pin_code_fields: ^7.0.0
+  loader_overlay: ^2.0.1
+  flutter_spinkit: "^4.1.2"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

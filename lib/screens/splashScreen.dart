@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(Duration(seconds: 3), () {
       //callback function after delay
       //if not logged in navigate to login screen
-      Navigator.pushReplacementNamed(context, '/login');
+      Navigator.pushReplacementNamed(context, '/signup');
       //if logged in then navigate to home screen
       //Navigator.pushReplacementNamed(context, '/home');
     });

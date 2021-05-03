@@ -1,23 +1,24 @@
-import 'package:covid_app/widgets/otpForm.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:covid_app/widgets/loginForm.dart';
+import 'package:covid_app/widgets/signupForm.dart';
 import 'package:covid_app/widgets/otpForm.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
-class LoginScreen extends StatefulWidget {
+class SignupScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignupScreenState createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
 
+  String _name='';
   String _number='';
 
-  void getOTP(String number) {
+  void getOTP(String name, String number) {
     //first check if entry is already in db.
-    //if yes then call api to get otp
+    //if not then call api to get otp
     //if otp sent successfully then:
+    //print(name);
     //print(number);
     context.loaderOverlay.show();
     Future.delayed(Duration(seconds: 3), () {
@@ -27,23 +28,24 @@ class _LoginScreenState extends State<LoginScreen> {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('OTP sent successfully')));
         pageContents.removeLast();
         pageContents.add(OTPForm(verifyOTP: verifyOTP, resendOTP: resendOTP,));
+        _name=name;
         _number=number;
       });
     });
   }
 
   void verifyOTP(String otp) {
-    //we have number in the state and otp is supplied as parameter
+    //we have name and number in the state and otp is supplied as parameter
     //verify otp is correct
-    //if yes then, navigate to home screen.
-    //if no then, take back to login screen
-    //Navigator.pushReplacementNamed(context, '/login');
+    //if yes then, create a new account and navigate to home screen.
+    //if no then, take back to signup screen
+    //Navigator.pushReplacementNamed(context, '/signup');
     context.loaderOverlay.show();
     Future.delayed(Duration(seconds: 3), ()
     {
       //simulating api call
       context.loaderOverlay.hide();
-      Navigator.pushReplacementNamed(context, '/login');
+      Navigator.pushReplacementNamed(context, '/signup');
     });
   }
 
@@ -63,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     var screenSize = MediaQuery.of(context).size;
     //var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
@@ -88,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Padding(
         padding: EdgeInsets.symmetric(vertical: 15.0),
         child: Text(
-          'Login to Covid App',
+          'SignUp to Covid App',
           style: TextStyle(
             color: Theme.of(context).primaryColor,
             fontSize: 25.0,
@@ -96,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
       ),
-      LoginForm(getOTP: getOTP),
+      SignupForm(getOTP: getOTP),
     ] : pageContents;
 
     return Container(
@@ -125,3 +128,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+

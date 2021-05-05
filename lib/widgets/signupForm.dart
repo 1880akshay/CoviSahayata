@@ -27,7 +27,7 @@ class _SignupFormState extends State<SignupForm> {
     FocusScope.of(context).unfocus();
     if (_signupFormKey.currentState.validate()) {
       //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Processing Data')));
-      widget.getOTP(name, number);
+      widget.getOTP(name, '+91'+number);
     }
   }
 
@@ -51,6 +51,7 @@ class _SignupFormState extends State<SignupForm> {
               TextFormField(
                 key: _nameKey,
                 focusNode: _nameFocus,
+                textCapitalization: TextCapitalization.words,
                 validator: (value) {
                   if(value==null || value.isEmpty) {
                     return 'Name cannot be empty';
@@ -107,6 +108,7 @@ class _SignupFormState extends State<SignupForm> {
                   ),
                   labelText: 'Phone Number',
                   prefixIcon: Icon(Icons.phone_android),
+                  prefixText: '+91 ',
                 ),
               ),
               SizedBox(height: 30),

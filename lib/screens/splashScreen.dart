@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -10,20 +11,29 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
 
   void checkLoginStatus() {
-    //TODO: implement this function
-    Future.delayed(Duration(seconds: 3), () {
-      //callback function after delay
-      //if not logged in navigate to login screen
-      Navigator.pushReplacementNamed(context, '/signup');
-      //if logged in then navigate to home screen
-      //Navigator.pushReplacementNamed(context, '/home');
+    Future.delayed(Duration(seconds: 1, milliseconds: 500), () {
+
+      FirebaseAuth _auth = FirebaseAuth.instance;
+      User _user = _auth.currentUser;
+
+      //print(_user.uid);
+      if(_user == null) {
+        Future(() {
+          Navigator.pushReplacementNamed(context, '/signup');
+        });
+      }
+      else {
+        Future(() {
+          Navigator.pushReplacementNamed(context, '/home');
+        });
+      }
     });
   }
 
   @override
   void initState() {
-    super.initState();
     checkLoginStatus();
+    super.initState();
   }
 
   @override

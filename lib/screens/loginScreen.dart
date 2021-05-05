@@ -2,8 +2,10 @@ import 'package:covid_app/widgets/otpForm.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/widgets/loginForm.dart';
-import 'package:covid_app/widgets/otpForm.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:covid_app/services/database.dart';
+import 'package:covid_app/services/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -13,50 +15,44 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
 
   String _number='';
+  String _sentCode;
 
-  void getOTP(String number) {
-    //first check if entry is already in db.
-    //if yes then call api to get otp
-    //if otp sent successfully then:
-    //print(number);
-    context.loaderOverlay.show();
-    Future.delayed(Duration(seconds: 3), () {
-      //simulating api call
-      context.loaderOverlay.hide();
-      setState(() {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('OTP sent successfully')));
-        pageContents.removeLast();
-        pageContents.add(OTPForm(verifyOTP: verifyOTP, resendOTP: resendOTP,));
-        _number=number;
-      });
+  void addOTPForm(String verificationId, String number) {
+    setState(() {
+      _sentCode = verificationId;
+      _number = number;
+      pageContents.removeLast();
+      pageContents.add(OTPForm(verifyOTP: verifyOTP, number: number));
     });
+  }
+
+  void addLoginForm() {
+    setState(() {
+      pageContents.removeLast();
+      pageContents.add(LoginForm(getOTP: getOTP));
+    });
+  }
+
+  void getOTP(String number) async {
+    //first check if entry is already in db.
+    context.loaderOverlay.show();
+    DatabaseReadService dbRead = DatabaseReadService();
+    bool isUserAlreadyPresent = await dbRead.doesUserAlreadyExist(number);
+    //if yes then call api to get otp
+    if(!isUserAlreadyPresent) {
+      context.loaderOverlay.hide();
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('No such user exists!')));
+      return;
+    }
+    AuthServices authService = AuthServices();
+    authService.loginSendOTP(context, number, addOTPForm, addLoginForm);
   }
 
   void verifyOTP(String otp) {
-    //we have number in the state and otp is supplied as parameter
-    //verify otp is correct
-    //if yes then, navigate to home screen.
-    //if no then, take back to login screen
-    //Navigator.pushReplacementNamed(context, '/login');
     context.loaderOverlay.show();
-    Future.delayed(Duration(seconds: 3), ()
-    {
-      //simulating api call
-      context.loaderOverlay.hide();
-      Navigator.pushReplacementNamed(context, '/login');
-    });
-  }
-
-  void resendOTP() {
-    //we have number in state
-    //resend otp on the number
-    context.loaderOverlay.show();
-    Future.delayed(Duration(seconds: 3), ()
-    {
-      //simulating api call
-      context.loaderOverlay.hide();
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('OTP sent successfully')));
-    });
+    PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(verificationId: _sentCode, smsCode: otp);
+    AuthServices authService = AuthServices();
+    authService.loginWithPhoneAuthCredential(phoneAuthCredential, _number, context, addLoginForm);
   }
 
   List pageContents = [];

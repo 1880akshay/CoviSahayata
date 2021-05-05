@@ -21,7 +21,7 @@ class _LoginFormState extends State<LoginForm> {
     FocusScope.of(context).unfocus();
     if (_loginFormKey.currentState.validate()) {
       //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Processing Data')));
-      widget.getOTP(number);
+      widget.getOTP('+91'+number);
     }
   }
 
@@ -69,6 +69,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   labelText: 'Phone Number',
                   prefixIcon: Icon(Icons.phone_android),
+                  prefixText: '+91 ',
                 ),
               ),
               SizedBox(height: 30),

@@ -6,8 +6,8 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 class OTPForm extends StatefulWidget {
 
   final Function verifyOTP;
-  final Function resendOTP;
-  OTPForm({ Key key, this.verifyOTP, this.resendOTP }): super(key: key);
+  final String number;
+  OTPForm({ Key key, this.verifyOTP, this.number }): super(key: key);
 
   @override
   _OTPFormState createState() => _OTPFormState();
@@ -16,9 +16,7 @@ class OTPForm extends StatefulWidget {
 class _OTPFormState extends State<OTPForm> {
 
   final _otpFormKey = GlobalKey<FormState>();
-
   TextEditingController textEditingController = TextEditingController();
-
   bool hasError = false;
 
   String otp='';
@@ -53,47 +51,34 @@ class _OTPFormState extends State<OTPForm> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'OTP',
-                        style: TextStyle(
-                          color: Colors.black87,
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 20.0),
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontFamily: 'OpenSans',
                     ),
-                    Row(
-                      children: [
-                        Text(
-                          'Didn\'t receive OTP? ',
-                          style: TextStyle(
-                            color: Colors.black54,
-                          ),
-                        ),
-                        RichText(
-                          text: TextSpan(
-                            text: 'Resend OTP',
-                            style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                            recognizer: TapGestureRecognizer()..onTap = () {
-                              //Navigator.pushReplacementNamed(context, '/login');
-                              //call for resend otp api
-                              widget.resendOTP();
-                            },
-                          ),
-                        ),
-                      ],
+                    children: [
+                      TextSpan(text: 'A One Time Password (OTP) has been sent to your mobile '),
+                      TextSpan(text: '${widget.number}', style: TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(text: '. Please enter the OTP here:'),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'OTP',
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w600,
                     ),
-                  ],
+                  ),
                 ),
               ),
               PinCodeTextField(
@@ -139,7 +124,7 @@ class _OTPFormState extends State<OTPForm> {
                   submitOTP();
                 },
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 15),
               Row(
                 children: [
                   Expanded(

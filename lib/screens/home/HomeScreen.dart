@@ -1,4 +1,5 @@
 import 'package:covid_app/screens/authenticate/sign_in.dart';
+import 'package:covid_app/screens/home/form.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/screens/authenticate/sign_in.dart';
@@ -44,15 +45,16 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xFFF8EBC5),
-        //body: PageStorage(
-          //child: currentScreen,
-          //bucket: bucket,
-        //),
-        /*body: Center(
+      //backgroundColor: Color(0xFFF8EBC5),
+      body: HomeScreen(),
+      //body: PageStorage(
+      //child: currentScreen,
+      //bucket: bucket,
+      //),
+      /*body: Center(
           child: Text('Welcome to Covid App'),
         ),*/
-        /* bottomNavigationBar: CurvedNavigationBar(
+      /* bottomNavigationBar: CurvedNavigationBar(
         color: Colors.blue[300],
         backgroundColor: Color(0xFFF8EBC5),
         height: 50,
@@ -69,53 +71,56 @@ class _HomeState extends State<Home> {
           print(index);
         },
       ),*/
-        bottomNavigationBar: FABBottomAppBar(
-          centerItemText: 'Add Request',
-          backgroundColor: Colors.white,
-          color: Colors.black,
-          selectedColor: Color(0xFFF8EBC5),
-          notchedShape: CircularNotchedRectangle(),
-          onTabSelected: _selectedTab,
-          iconSize: 20,
-          height: 60,
-          items: [
-            FABBottomAppBarItem(iconData: Icons.home, text: 'Home'),
-            FABBottomAppBarItem(iconData: Icons.account_circle, text: 'Profile'),
-          ],
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: _buildFab(
-            context),
+      bottomNavigationBar: FABBottomAppBar(
+        centerItemText: 'Add Request',
+        backgroundColor: Colors.white,
+        color: Colors.black,
+        selectedColor: Color(0xFFF8EBC5),
+        notchedShape: CircularNotchedRectangle(),
+        onTabSelected: _selectedTab,
+        iconSize: 20,
+        height: 60,
+        items: [
+          FABBottomAppBarItem(iconData: Icons.home, text: 'Home'),
+          FABBottomAppBarItem(iconData: Icons.account_circle, text: 'Profile'),
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue[300],
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => form_fill()));
+        },
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+        elevation: 2.0,
+      ),
 
     );
-       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton(
-          onPressed: ()async{
-            await _auth.signOut();
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
-          },
-          child: Icon(Icons.logout),
+    // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    floatingActionButton:
+    FloatingActionButton(
+      onPressed: () async {
+        await _auth.signOut();
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => LoginScreen()));
+      },
+      child: Icon(Icons.logout),
 
       //  )
     );
   }
-
-Widget _buildFab(BuildContext context) {
-  final icons = [ Icons.sms, Icons.mail, Icons.phone ];
+}
+/*Widget _buildFab(BuildContext context) {
+  //final icons = [ Icons.sms, Icons.mail, Icons.phone ];
   return AnchoredOverlay(
-    showOverlay: true,
-    overlayBuilder: (context, offset) {
-      return CenterAbout(
-        position: Offset(offset.dx, offset.dy - icons.length * 35.0),
-        child: FabWithIcons(
-          icons: icons,
-          onIconTapped: _selectedFab,
-        ),
-      );
-    },
+    //showOverlay: true,
+
     child: FloatingActionButton(
       backgroundColor: Colors.blue[300],
       onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> form_fill()));
       },
       tooltip: 'Increment',
       child: Icon(Icons.add),
@@ -123,4 +128,4 @@ Widget _buildFab(BuildContext context) {
     ),
   );
 }
-}
+}*/

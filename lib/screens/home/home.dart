@@ -1,9 +1,8 @@
-import 'package:covid_app/screens/authenticate/sign_in.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:covid_app/screens/models/request.dart';
 import 'package:flutter/material.dart';
-import 'package:covid_app/screens/authenticate/sign_in.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-
+import 'package:covid_app/services/database.dart';
+import 'package:provider/provider.dart';
+import 'data.dart';
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -12,10 +11,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.amber,
-      body: Center(
-        child: Text('Home'),
+    return StreamProvider<List<Requests>>.value(
+      value: DatabaseService().data,
+      child: Scaffold(
+        backgroundColor: Colors.amber,
+        body: data(),
       ),
     );
   }

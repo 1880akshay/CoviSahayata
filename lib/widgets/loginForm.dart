@@ -62,28 +62,42 @@ class _LoginFormState extends State<LoginForm> {
                   submitLogin();
                 },
                 keyboardType: TextInputType.number,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey[850],
+                ),
                 decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(6),
                   border: OutlineInputBorder(),
                   enabledBorder: const OutlineInputBorder(
                     borderSide: const BorderSide(color: Colors.black26),
                   ),
                   labelText: 'Phone Number',
-                  prefixIcon: Icon(Icons.phone_android),
+                  labelStyle: TextStyle(
+                    fontSize: 14,
+                  ),
+                  prefixIcon: Icon(
+                    Icons.phone_android,
+                    size: 20,
+                  ),
                   prefixText: '+91 ',
+                  prefixStyle: TextStyle(
+                    fontSize: 14,
+                  ),
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 20),
               Row(
                 children: [
                   Expanded(
                     child: ElevatedButton(
                       onPressed: submitLogin,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 13.0),
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
                         child: Text(
                           'Send OTP',
                           style: TextStyle(
-                              fontSize: 16.0
+                              fontSize: 15.0
                           ),
                         ),
                       ),
@@ -110,6 +124,7 @@ class _LoginFormState extends State<LoginForm> {
                       'New to Covid App? ',
                       style: TextStyle(
                         color: Colors.black54,
+                        fontSize: 13,
                       ),
                     ),
                     RichText(

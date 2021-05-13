@@ -20,7 +20,7 @@ class AuthServices {
         context.loaderOverlay.hide();
         Navigator.pushReplacementNamed(context, '/home');
       }
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Signed in successfully!')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Signed in successfully!'), behavior: SnackBarBehavior.floating));
     } on FirebaseAuthException catch (e) {
       context.loaderOverlay.hide();
       addSignupForm();
@@ -58,7 +58,7 @@ class AuthServices {
         context.loaderOverlay.hide();
         Navigator.pushReplacementNamed(context, '/home');
       }
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Signed in successfully!')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Signed in successfully!'), behavior: SnackBarBehavior.floating));
     } on FirebaseAuthException catch (e) {
       context.loaderOverlay.hide();
       addLoginForm();

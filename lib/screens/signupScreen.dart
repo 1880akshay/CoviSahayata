@@ -39,7 +39,7 @@ class _SignupScreenState extends State<SignupScreen> {
   void getOTP(String name, String number) async {
     //first check if entry is already in db.
     context.loaderOverlay.show();
-    DatabaseReadService dbRead = DatabaseReadService();
+    DatabaseService dbRead = DatabaseService();
     bool isUserAlreadyPresent = await dbRead.doesUserAlreadyExist(number);
     //if not then call api to get otp
     if(isUserAlreadyPresent) {
@@ -68,7 +68,7 @@ class _SignupScreenState extends State<SignupScreen> {
     var screenHeight = screenSize.height;
 
     pageContents = (pageContents.isEmpty) ? <Widget>[
-      SizedBox(height: screenHeight*0.09),
+      SizedBox(height: screenHeight*0.1),
       Row(
         children: [
           Expanded(
@@ -91,7 +91,7 @@ class _SignupScreenState extends State<SignupScreen> {
           'SignUp to Covid App',
           style: TextStyle(
             color: Theme.of(context).primaryColor,
-            fontSize: 25.0,
+            fontSize: 22.0,
             fontWeight: FontWeight.bold,
           ),
         ),

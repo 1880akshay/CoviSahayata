@@ -56,8 +56,9 @@ class _OTPFormState extends State<OTPForm> {
                   textAlign: TextAlign.center,
                   text: TextSpan(
                     style: TextStyle(
-                      color: Colors.black54,
+                      color: Colors.grey,
                       fontFamily: 'OpenSans',
+                      fontSize: 13,
                     ),
                     children: [
                       TextSpan(text: 'A One Time Password (OTP) has been sent to your mobile '),
@@ -74,7 +75,7 @@ class _OTPFormState extends State<OTPForm> {
                   child: Text(
                     'OTP',
                     style: TextStyle(
-                      color: Colors.black87,
+                      color: Colors.grey[850],
                       fontSize: 15.0,
                       fontWeight: FontWeight.w600,
                     ),
@@ -84,7 +85,7 @@ class _OTPFormState extends State<OTPForm> {
               PinCodeTextField(
                 appContext: context,
                 pastedTextStyle: TextStyle(
-                  color: Colors.black,
+                  color: Colors.grey[850],
                   fontWeight: FontWeight.bold,
                 ),
                 length: 6,
@@ -99,18 +100,20 @@ class _OTPFormState extends State<OTPForm> {
                   if(regExp.hasMatch(value)) return null;
                   return 'Invalid OTP';
                 },
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 pinTheme: PinTheme(
                   shape: PinCodeFieldShape.box,
                   borderRadius: BorderRadius.circular(5),
-                  fieldHeight: 60,
-                  fieldWidth: 50,
-                  activeColor: Colors.black38,
-                  selectedColor: Colors.black87,
-                  inactiveColor: Colors.black38,
+                  fieldHeight: 45,
+                  fieldWidth: 45,
+                  activeColor: Colors.black26,
+                  selectedColor: Colors.grey[850],
+                  inactiveColor: Colors.black26,
                 ),
-                cursorColor: Colors.black,
-                animationDuration: Duration(milliseconds: 300),
-                textStyle: TextStyle(fontSize: 20, height: 1.6),
+                cursorColor: Colors.grey[850],
+                cursorHeight: 20,
+                animationDuration: Duration(milliseconds: 100),
+                textStyle: TextStyle(fontSize: 16, height: 1, fontWeight: FontWeight.w600, color: Colors.grey[850]),
                 enableActiveFill: false,
                 controller: textEditingController,
                 keyboardType: TextInputType.number,
@@ -124,18 +127,18 @@ class _OTPFormState extends State<OTPForm> {
                   submitOTP();
                 },
               ),
-              SizedBox(height: 15),
+              SizedBox(height: 10),
               Row(
                 children: [
                   Expanded(
                     child: ElevatedButton(
                       onPressed: submitOTP,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 13.0),
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
                         child: Text(
                           'Verify OTP',
                           style: TextStyle(
-                              fontSize: 16.0
+                              fontSize: 15.0
                           ),
                         ),
                       ),

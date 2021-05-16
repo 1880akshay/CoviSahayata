@@ -5,6 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:covid_app/services/locationData.dart';
+import 'package:covid_app/services/requirementData.dart';
 
 class AddRequest extends StatefulWidget {
 
@@ -39,11 +40,8 @@ class _AddRequestState extends State<AddRequest> {
   bool districtEnabled = false;
   List<String> districtData = [];
 
-  List<String> stateData = [
-    'Bombay', 'Delhi', 'Kolkata', 'Ranchi', 'Amritsar',
-  ];
-
   List<Map<String, dynamic>> locationData = LocationData().locationData;
+  List<String> requirementData = RequirementData().requirementData;
 
   @override
   void initState() {
@@ -117,15 +115,7 @@ class _AddRequestState extends State<AddRequest> {
             Wrap(
               alignment: WrapAlignment.center,
               direction: Axis.horizontal,
-              children: [
-                RequirementChip(label: 'Oxygen', toggle: toggleRequirementSelection),
-                RequirementChip(label: 'Ventilator', toggle: toggleRequirementSelection),
-                RequirementChip(label: 'ICU', toggle: toggleRequirementSelection),
-                RequirementChip(label: 'Beds', toggle: toggleRequirementSelection),
-                RequirementChip(label: 'Plasma', toggle: toggleRequirementSelection),
-                RequirementChip(label: 'Remdesivir', toggle: toggleRequirementSelection),
-                RequirementChip(label: 'Fabiflu', toggle: toggleRequirementSelection),
-              ],
+              children: requirementData.map((e) => RequirementChip(label: e, toggle: toggleRequirementSelection)).toList().cast<Widget>(),
             ),
             if(userRequirements.isEmpty && (userRequirementEdited || submitClicked)) Padding(
               padding: const EdgeInsets.all(6),

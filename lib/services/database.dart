@@ -97,14 +97,28 @@ class DatabaseService {
       .map(_getUserDataFromSnapshot);
   }
 
-  Stream<QuerySnapshot> get getRequestsPrev {
-    return pendingRequests
-      .orderBy('time', descending: true)
-      .snapshots();
-  }
+  // Stream<QuerySnapshot> get getRequestsPrev {
+  //   return pendingRequests
+  //     .orderBy('time', descending: true)
+  //     .snapshots();
+  // }
 
   Future<QuerySnapshot> get getRequests {
     return pendingRequests
+      .orderBy('time', descending: true)
+      .get();
+  }
+  
+  Future<QuerySnapshot> getRequestsWithRequirementFilter(List<String> requirements) {
+    return pendingRequests
+      .where('requirement', arrayContainsAny: requirements)
+      .orderBy('time', descending: true)
+      .get();
+  }
+
+  Future<QuerySnapshot> getRequestsWithStateFilter(List<String> states) {
+    return pendingRequests
+      .where('state', whereIn: states)
       .orderBy('time', descending: true)
       .get();
   }

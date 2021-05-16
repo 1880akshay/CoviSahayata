@@ -18,7 +18,6 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
 
-  double avatarSize = 110;
   FirebaseAuth _auth;
   User _user;
 
@@ -91,6 +90,10 @@ class _ProfileState extends State<Profile> {
     //var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
 
+    double headerHeight1 = 0.24 * screenHeight; //revert to 200
+    double headerHeight2 = 0.12 * screenHeight; //revert to 100
+    double avatarSize = 0.13 * screenHeight; //revert to 110
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xfff2f3f5),
@@ -113,7 +116,7 @@ class _ProfileState extends State<Profile> {
                     child: Column(
                       children: [
                         Container(
-                          height: 200,
+                          height: headerHeight1,
                           decoration: BoxDecoration(
                             //color: Theme.of(context).primaryColor,
                             image: DecorationImage(
@@ -126,14 +129,15 @@ class _ProfileState extends State<Profile> {
                         ),
                         Container(
                           color: Colors.white,
-                          height: 100,
+                          height: headerHeight2,
                           child: Padding(
                             padding: EdgeInsets.only(top: avatarSize / 2),
                             child: Center(
                                 child: Text(
                                   (userData != null) ? userData.name : '',
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 18,
+                                    letterSpacing: 0.3,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.grey[850],
                                   ),
@@ -145,7 +149,7 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                   Positioned(
-                    top: 200 - avatarSize / 2,
+                    top: headerHeight1 - avatarSize / 2,
                     child: Initicon(
                       text: (userData != null) ? userData.name : '',
                       elevation: 5.0,
@@ -155,7 +159,7 @@ class _ProfileState extends State<Profile> {
                 ],
               ),
               Container(
-                height: screenHeight - 360,
+                height: screenHeight - headerHeight1 - headerHeight2 - 60,
                 child: (userData != null) ? ListView(
                   padding: EdgeInsets.only(bottom: 50),
                   children: [

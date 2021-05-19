@@ -4,6 +4,7 @@ import 'package:covid_app/services/locationData.dart';
 import 'package:covid_app/services/requirementData.dart';
 import 'package:covid_app/widgets/filters.dart';
 import 'package:covid_app/widgets/requestCard.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_placeholder_textlines/flutter_placeholder_textlines.dart';
@@ -16,6 +17,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  final String uid1 = FirebaseAuth.instance.currentUser.uid;
 
   List<bool> requirementIsSelected = List.filled(RequirementData().requirementData.length, false);
   List<bool> stateIsSelected = List.filled(LocationData().locationData.length, false);
@@ -135,6 +138,7 @@ class _HomeState extends State<Home> {
                           itemBuilder: (BuildContext context, int index) {
                             return RequestCard(
                               requestData: bothFiltersData[index].data(),
+                              uid1: uid1,
                             );
                           }
                       ),
@@ -194,6 +198,7 @@ class _HomeState extends State<Home> {
                         itemBuilder: (BuildContext context, int index) {
                           return RequestCard(
                             requestData: snapshot.data.docs[index].data(),
+                            uid1: uid1,
                           );
                         }
                     ),

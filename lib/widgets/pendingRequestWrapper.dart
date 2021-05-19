@@ -91,7 +91,7 @@ class PendingRequestWrapper extends StatelessWidget {
               ),
             ),
           ),
-          RequestCard(requestData: requestData),
+          RequestCard(requestData: requestData, uid1: requestData['uid']),
         ],
       ),
     );

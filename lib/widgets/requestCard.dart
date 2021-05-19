@@ -1,13 +1,20 @@
 import 'package:covid_app/models/user.dart';
 import 'package:covid_app/services/database.dart';
+import 'package:covid_app/widgets/chatScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class RequestCard extends StatelessWidget {
+class RequestCard extends StatefulWidget {
   final Map<String, dynamic> requestData;
-  const RequestCard({Key key, this.requestData}) : super(key: key);
+  final String uid1;
+  const RequestCard({Key key, this.requestData, this.uid1}) : super(key: key);
 
+  @override
+  _RequestCardState createState() => _RequestCardState();
+}
+
+class _RequestCardState extends State<RequestCard> {
   _makePhoneCall(String number) async {
     var url = 'tel:$number';
     if (await canLaunch(url)) {
@@ -17,10 +24,93 @@ class RequestCard extends StatelessWidget {
     }
   }
 
+  Future<void> _showPhoneDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          titlePadding: EdgeInsets.fromLTRB(25, 20, 25, 0),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Call',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              GestureDetector(
+                child: Icon(
+                  Icons.close,
+                  size: 18,
+                ),
+                onTap: () {Navigator.of(context).pop();},
+              ),
+            ],
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextButton.icon(
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all(EdgeInsets.zero),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      _makePhoneCall(widget.requestData['primaryNumber']);
+                    },
+                    icon: Icon(
+                      Icons.call,
+                      size: 18,
+                      color: Colors.grey[850],
+                    ),
+                    label: Text(
+                      widget.requestData['primaryNumber'],
+                      style: TextStyle(
+                        color: Colors.grey[850],
+                      ),
+                    ),
+                  ),
+                ),
+                if(widget.requestData.containsKey('secondaryNumber'))
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: TextButton.icon(
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all(EdgeInsets.zero),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        _makePhoneCall(widget.requestData['secondaryNumber']);
+                      },
+                      icon: Icon(
+                        Icons.call,
+                        size: 18,
+                        color: Colors.grey[850],
+                      ),
+                      label: Text(
+                        widget.requestData['secondaryNumber'],
+                        style: TextStyle(
+                          color: Colors.grey[850],
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
 
-    DateTime dateTimeData = DateTime.fromMillisecondsSinceEpoch(requestData['time'].seconds * 1000);
+    DateTime dateTimeData = DateTime.fromMillisecondsSinceEpoch(widget.requestData['time'].seconds * 1000);
     String date = DateFormat.yMMMMd('en_US').format(dateTimeData);
 
     return Padding(
@@ -52,7 +142,7 @@ class RequestCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '${requestData['requirement'].join(', ')} required in ${requestData['district']}, ${requestData['state']}',
+                            '${widget.requestData['requirement'].join(', ')} required in ${widget.requestData['district']}, ${widget.requestData['state']}',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 15.0,
@@ -61,7 +151,7 @@ class RequestCard extends StatelessWidget {
                           ),
                           SizedBox(height: 1),
                           StreamBuilder<UserData>(
-                            stream: DatabaseService(uid: requestData['uid']).getProfile,
+                            stream: DatabaseService(uid: widget.requestData['uid']).getProfile,
                             builder: (context, snapshot) {
                               return Text(
                                 (snapshot.data != null) ? '- ${snapshot.data.name}' : '',
@@ -99,14 +189,19 @@ class RequestCard extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: TextButton.icon(
-                      onPressed: () {_makePhoneCall(requestData['primaryNumber']);},
+                      //onPressed: () {_makePhoneCall(requestData['primaryNumber']);},
+                      onPressed: () {
+                        if(widget.uid1 != widget.requestData['uid']) {
+                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => ChatScreen(uid1: widget.uid1, uid2: widget.requestData['uid'])));
+                        }
+                      },
                       icon: Icon(
-                        Icons.phone,
+                        Icons.message,
                         color: Colors.grey[850],
                         size: 18,
                       ),
                       label: Text(
-                        requestData['primaryNumber'],
+                        'Message',
                         style: TextStyle(
                           color: Colors.grey[850],
                           fontSize: 13,
@@ -114,24 +209,27 @@ class RequestCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  (requestData.containsKey('secondaryNumber')) ? Expanded(
+                  Expanded(
                     flex: 1,
                     child: TextButton.icon(
-                      onPressed: () {_makePhoneCall(requestData['secondaryNumber']);},
+                      onPressed: () async {
+                        //_makePhoneCall(widget.requestData['primaryNumber']);
+                        await _showPhoneDialog();
+                      },
                       icon: Icon(
                         Icons.phone,
                         color: Colors.grey[850],
                         size: 18,
                       ),
                       label: Text(
-                        requestData['secondaryNumber'],
+                        'Call',
                         style: TextStyle(
                           color: Colors.grey[850],
                           fontSize: 13,
                         ),
                       ),
                     ),
-                  ) : Container(),
+                  ),
                 ],
               ),
             ],

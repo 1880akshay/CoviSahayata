@@ -11,7 +11,6 @@ class DatabaseService {
   final CollectionReference users = FirebaseFirestore.instance.collection('users');
   final CollectionReference pendingRequests = FirebaseFirestore.instance.collection('pendingRequests');
   final CollectionReference completedRequests = FirebaseFirestore.instance.collection('completedRequests');
-  final CollectionReference deletedRequests = FirebaseFirestore.instance.collection('deletedRequests');
 
   Future<bool> doesUserAlreadyExist(String number) async {
     final QuerySnapshot result = await users
@@ -62,28 +61,6 @@ class DatabaseService {
     }
   }
 
-  Future deleteAccount() async {
-    final QuerySnapshot pRequests = await pendingRequests.where('uid', isEqualTo: uid).get();
-    final List<DocumentSnapshot> penRequests = pRequests.docs;
-    for(var i=0; i<penRequests.length; i++) {
-      await deletedRequests.add(penRequests[i].data());
-      await pendingRequests.doc(penRequests[i].id).delete();
-    }
-    final QuerySnapshot cRequests = await completedRequests.where('uid', isEqualTo: uid).get();
-    final List<DocumentSnapshot> comRequests = cRequests.docs;
-    for(var i=0; i<comRequests.length; i++) {
-      await deletedRequests.add(comRequests[i].data());
-      await completedRequests.doc(comRequests[i].id).delete();
-    }
-    return await users.doc(uid).delete();
-  }
-
-  //testing function
-  // Future markAsPending(String documentId, Map<String, dynamic> requestData) async {
-  //   await completedRequests.doc(documentId).delete();
-  //   return await pendingRequests.add(requestData);
-  // }
-
   UserData _getUserDataFromSnapshot(DocumentSnapshot snapshot) {
     return UserData(
       uid: uid,
@@ -95,6 +72,12 @@ class DatabaseService {
   Stream<UserData> get getProfile {
     return users.doc(uid).snapshots()
       .map(_getUserDataFromSnapshot);
+  }
+  
+  Stream<QuerySnapshot> get getChatsList {
+    return users.doc(uid).collection('chatsWith')
+      .orderBy('lastMessageAt', descending: true)
+      .snapshots();
   }
 
   // Stream<QuerySnapshot> get getRequestsPrev {
@@ -135,6 +118,53 @@ class DatabaseService {
       .where('uid', isEqualTo: uid)
       .orderBy('time', descending: true)
       .snapshots();
+  }
+
+  Stream<QuerySnapshot> getMessages(String uid1, String uid2) {
+    int temp = uid1.compareTo(uid2);
+    String docId;
+    if(temp==-1) {
+      docId = uid1+uid2;
+    }
+    else {
+      docId = uid2+uid1;
+    }
+    final CollectionReference messages = FirebaseFirestore.instance.collection('chats').doc(docId).collection('messages');
+    return messages
+      .orderBy('sentAt', descending: true)
+      .snapshots();
+  }
+
+  Future addMessage(String message, String uid1, String uid2) async {
+    int temp = uid1.compareTo(uid2);
+    String docId;
+    if(temp==-1) {
+      docId = uid1+uid2;
+    }
+    else {
+      docId = uid2+uid1;
+    }
+    final CollectionReference messages = FirebaseFirestore.instance.collection('chats').doc(docId).collection('messages');
+    final CollectionReference sender = FirebaseFirestore.instance.collection('users').doc(uid1).collection('chatsWith');
+    final CollectionReference receiver = FirebaseFirestore.instance.collection('users').doc(uid2).collection('chatsWith');
+
+    Timestamp time = Timestamp.now();
+
+    sender.doc(uid2).set({
+      "uid": uid2,
+      "lastMessageAt": time,
+    });
+
+    receiver.doc(uid1).set({
+      "uid": uid1,
+      "lastMessageAt": time,
+    });
+
+    return await messages.add({
+      'sentBy': uid1,
+      'sentAt': time,
+      'message': message,
+    });
   }
 
 }

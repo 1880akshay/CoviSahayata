@@ -1,4 +1,5 @@
 import 'package:covid_app/widgets/addRequest.dart';
+import 'package:covid_app/widgets/chatScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/screens/splashScreen.dart';
 import 'package:covid_app/screens/signupScreen.dart';
@@ -54,10 +55,11 @@ class _MyAppState extends State<MyApp> {
             '/signup': (context) => DoubleBack(message: 'Press back again to close', child: SignupScreen()),
             '/login': (context) => DoubleBack(message: 'Press back again to close', child: LoginScreen()),
             '/home': (context) => DoubleBack(message: 'Press back again to close', child: HomeScreen()),
-            '/addRequest' : (context) => AddRequest(),
+            '/addRequest': (context) => AddRequest(),
           },
           theme: ThemeData(
             primaryColor: Colors.blueGrey, //TODO: Decide theme colors
+            primaryColorLight: Colors.blueGrey[100],
             //To use hex => Color(0xff_HEX_)
             //define default font family here,
             fontFamily: 'OpenSans',

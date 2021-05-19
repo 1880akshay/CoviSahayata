@@ -1,3 +1,4 @@
+import 'package:covid_app/widgets/myMessages.dart';
 import 'package:covid_app/widgets/myRequests.dart';
 import 'package:covid_app/models/user.dart';
 import 'package:covid_app/services/database.dart';
@@ -28,59 +29,6 @@ class _ProfileState extends State<Profile> {
     _auth = FirebaseAuth.instance;
     _user = _auth.currentUser;
     super.initState();
-  }
-
-  Future<void> _showConfirmationDialog(BuildContext mainContext) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            'Delete Account',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text('Are you sure you want to delete your account permanently? This action cannot be undone.'),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text('NO'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: Text('YES'),
-              onPressed: () async {
-                Navigator.of(context).pop();
-                mainContext.loaderOverlay.show();
-                try {
-                  await DatabaseService(uid: _user.uid).deleteAccount();
-                  await _auth.signOut();
-                  Navigator.pushReplacementNamed(mainContext, '/signup');
-                  mainContext.loaderOverlay.hide();
-                  ScaffoldMessenger.of(mainContext).showSnackBar(SnackBar(content: Text('Account deleted successfully!')));
-                } catch(e) {
-                  mainContext.loaderOverlay.hide();
-                  ScaffoldMessenger.of(mainContext).showSnackBar(SnackBar(content: Text('Something went wrong! Please try again')));
-                }
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void deleteAccount(BuildContext mainContext) async {
-    await _showConfirmationDialog(mainContext);
   }
 
   @override
@@ -170,9 +118,10 @@ class _ProfileState extends State<Profile> {
                         children: [
                           ProfilePageButton(title: 'My Requests', subTitle: 'Check your pending and completed requests', icon: Icons.question_answer_outlined, onTap: () {Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => MyRequests(uid: userData.uid)));}),
                           SizedBox(height: 3),
-                          ProfilePageButton(title: 'Edit Name', subTitle: 'Edit your profile name', icon: Icons.edit_outlined, onTap: () {Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => EditName(initialName: userData.name, uid: userData.uid)));}),
+                          ProfilePageButton(title: 'My Messages', subTitle: 'Check all your messages', icon: Icons.message_outlined, onTap: () {Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => MyMessages()));}),
                           SizedBox(height: 3),
-                          ProfilePageButton(title: 'Delete Account', subTitle: 'Delete your account permanently', icon: Icons.delete_outline_outlined, onTap: () {deleteAccount(context);}),
+                          ProfilePageButton(title: 'Edit Name', subTitle: 'Edit your profile name', icon: Icons.edit_outlined, onTap: () {Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => EditName(initialName: userData.name, uid: userData.uid)));}),
+                          // ProfilePageButton(title: 'Delete Account', subTitle: 'Delete your account permanently', icon: Icons.delete_outline_outlined, onTap: () {deleteAccount(context);}),
                           SizedBox(height: 3),
                         ],
                       ),

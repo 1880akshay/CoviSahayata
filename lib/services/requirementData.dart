@@ -1,5 +1,5 @@
 class RequirementData {
-  List<String> requirementData = ['Oxygen', 'Ventilator', 'ICU', 'Beds', 'Plasma', 'Remdesivir', 'Fabiflu'];
+  List<String> requirementData = ['Ambulance', 'Oxygen', 'Ventilator', 'ICU', 'Beds', 'Plasma', 'Remdesivir', 'Fabiflu'];
 
   RequirementData();
 }

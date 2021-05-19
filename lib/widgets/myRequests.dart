@@ -1,10 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:covid_app/services/database.dart';
 import 'package:covid_app/widgets/pendingRequestWrapper.dart';
 import 'package:covid_app/widgets/requestCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_placeholder_textlines/flutter_placeholder_textlines.dart';
-import 'package:loader_overlay/loader_overlay.dart';
 
 class MyRequests extends StatefulWidget {
 
@@ -123,6 +121,7 @@ class _MyRequestsState extends State<MyRequests> {
                     itemBuilder: (BuildContext context, int index) {
                       return RequestCard(
                         requestData: snapshot.data.docs[index].data(),
+                        uid1: widget.uid,
                       );
                     }
                 ) : (snapshot.hasData && snapshot.data.docs.length == 0) ?

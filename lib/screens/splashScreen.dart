@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xfff2f3f5),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -78,12 +78,23 @@ class _SplashScreenState extends State<SplashScreen> {
                         child: SizedBox(),
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 30.0),
+                        padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                         child: Text(
                           'Covid App', //TODO: think of app name
                           style: TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
+                            color: Colors.grey[850],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 30.0),
+                        child: Text(
+                          'Developed by Akshay Jain & Aaditya Bhardwaj',
+                          style: TextStyle(
+                            color: Colors.grey[500],
+                            fontSize: 12,
                           ),
                         ),
                       ),

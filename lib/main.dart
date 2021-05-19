@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    precacheImage(AssetImage('assets/images/bg2.jpg'), context);
+    precacheImage(AssetImage('assets/images/bg.jpg'), context);
     precacheImage(AssetImage('assets/images/icon.png'), context);
     precacheImage(AssetImage('assets/images/headbg.png'), context);
     super.initState();

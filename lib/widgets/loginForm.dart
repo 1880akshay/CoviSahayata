@@ -121,7 +121,7 @@ class _LoginFormState extends State<LoginForm> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'New to Covid App? ',
+                      'New to CoviSahayata? ',
                       style: TextStyle(
                         color: Colors.black54,
                         fontSize: 13,

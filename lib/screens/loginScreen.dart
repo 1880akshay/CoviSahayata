@@ -84,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Padding(
         padding: EdgeInsets.symmetric(vertical: 15.0),
         child: Text(
-          'Login to Covid App',
+          'Login to CoviSahayata',
           style: TextStyle(
             color: Theme.of(context).primaryColor,
             fontSize: 22.0,

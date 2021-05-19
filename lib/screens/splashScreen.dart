@@ -80,7 +80,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                         child: Text(
-                          'Covid App', //TODO: think of app name
+                          'CoviSahayata', //TODO: think of app name
                           style: TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,

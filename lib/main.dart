@@ -1,5 +1,4 @@
 import 'package:covid_app/widgets/addRequest.dart';
-import 'package:covid_app/widgets/chatScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/screens/splashScreen.dart';
 import 'package:covid_app/screens/signupScreen.dart';

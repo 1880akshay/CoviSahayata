@@ -88,7 +88,7 @@ class _SignupScreenState extends State<SignupScreen> {
       Padding(
         padding: EdgeInsets.symmetric(vertical: 15.0),
         child: Text(
-          'SignUp to Covid App',
+          'SignUp to CoviSahayata',
           style: TextStyle(
             color: Theme.of(context).primaryColor,
             fontSize: 22.0,

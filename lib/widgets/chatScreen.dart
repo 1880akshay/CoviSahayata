@@ -5,6 +5,7 @@ import 'package:covid_app/widgets/chatMessages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_initicon/flutter_initicon.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:intl/intl.dart';
 
 class ChatScreen extends StatefulWidget {
   final String uid1;
@@ -19,6 +20,8 @@ class _ChatScreenState extends State<ChatScreen> {
 
   UserData secondUser;
   TextEditingController messageController = TextEditingController();
+
+  ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -63,19 +66,73 @@ class _ChatScreenState extends State<ChatScreen> {
                     stream: DatabaseService().getMessages(widget.uid1, widget.uid2),
                     builder: (context, snapshot) {
                       return (snapshot.hasData && snapshot.data.docs.length > 0) ? ListView.builder(
+                        controller: _scrollController,
                         reverse: true,
-                        padding: EdgeInsets.all(10),
+                        padding: EdgeInsets.fromLTRB(10, 5, 10, 0),
                         itemCount: snapshot.data.docs.length,
                         itemBuilder: (BuildContext context, int index) {
+                          bool showDate = false;
+                          String date1 = DateFormat.yMMMMd('en_US').format(DateTime.fromMillisecondsSinceEpoch(snapshot.data.docs[index].data()['sentAt'].seconds * 1000));
+                          String date2;
+                          if(index == snapshot.data.docs.length-1) showDate = true;
+                          else {
+                            date2 = DateFormat.yMMMMd('en_US').format(DateTime.fromMillisecondsSinceEpoch(snapshot.data.docs[index+1].data()['sentAt'].seconds * 1000));
+                            if(date1 != date2) showDate = true;
+                          }
+
                           if(snapshot.data.docs[index].data()['sentBy'] == widget.uid1) {
+                            if(showDate) {
+                              return Column(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.all(5),
+                                    child: Center(
+                                      child: Text(
+                                        date1,
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 5),
+                                    child: ChatMessageSelf(messageData: snapshot.data.docs[index].data()),
+                                  ),
+                                ],
+                              );
+                            }
                             return Padding(
-                              padding: (index == snapshot.data.docs.length-1) ? EdgeInsets.symmetric(vertical: 6) : (snapshot.data.docs[index+1].data()['sentBy'] == widget.uid1) ? EdgeInsets.only(bottom: 5) : EdgeInsets.symmetric(vertical: 6),
+                              padding: (index == snapshot.data.docs.length-1) ? EdgeInsets.symmetric(vertical: 5) : (snapshot.data.docs[index+1].data()['sentBy'] == widget.uid1) ? EdgeInsets.only(bottom: 5) : EdgeInsets.symmetric(vertical: 5),
                               child: ChatMessageSelf(messageData: snapshot.data.docs[index].data()),
                             );
                           }
                           else {
+                            if(showDate) {
+                              return Column(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.all(5),
+                                    child: Center(
+                                      child: Text(
+                                        date1,
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 5),
+                                    child: ChatMessageOther(messageData: snapshot.data.docs[index].data()),
+                                  ),
+                                ],
+                              );
+                            }
                             return Padding(
-                              padding: (index == snapshot.data.docs.length-1) ? EdgeInsets.symmetric(vertical: 6) : (snapshot.data.docs[index+1].data()['sentBy'] == widget.uid2) ? EdgeInsets.only(bottom: 5) : EdgeInsets.symmetric(vertical: 6),
+                              padding: (index == snapshot.data.docs.length-1) ? EdgeInsets.symmetric(vertical: 5) : (snapshot.data.docs[index+1].data()['sentBy'] == widget.uid2) ? EdgeInsets.only(bottom: 5) : EdgeInsets.symmetric(vertical: 5),
                               child: ChatMessageOther(messageData: snapshot.data.docs[index].data()),
                             );
                           }
@@ -122,11 +179,17 @@ class _ChatScreenState extends State<ChatScreen> {
                                   borderSide: BorderSide(color: Colors.transparent),
                                   borderRadius: BorderRadius.all(Radius.circular(50)),
                                 ),
-                                prefixIcon: Icon(
-                                  Icons.emoji_emotions_outlined,
-                                  size: 22,
+                                prefixIcon: IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.emoji_emotions_outlined,
+                                    size: 22,
+                                  ),
                                 ),
                                 hintText: 'Type your message',
+                                hintStyle: TextStyle(
+                                  color: Colors.grey[400],
+                                ),
                               ),
                             ),
                           ),
@@ -152,6 +215,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             onPressed: () async {
                               if(messageController.text != '') {
                                 //print(messageController.text);
+                                _scrollController.animateTo(_scrollController.position.minScrollExtent, duration: Duration(milliseconds: 100), curve: Curves.easeInOut);
                                 await DatabaseService().addMessage(messageController.text, widget.uid1, widget.uid2);
                                 messageController.text = '';
                               }

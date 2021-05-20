@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff2f3f5),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -47,30 +47,30 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Column(
               children: [
                 Expanded(
-                  flex: 2,
+                  flex: 5,
                   child: SizedBox(),
                 ),
                 Expanded(
-                  flex: 1,
+                  flex: 4,
                   child: Row(
                     children: [
                       Expanded(
-                        flex: 1,
+                        flex: 19,
                         child: SizedBox(),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 16,
                         child: Image.asset('assets/images/icon.png'), //TODO: design app logo
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 19,
                         child: SizedBox(),
                       ),
                     ],
                   ),
                 ),
                 Expanded(
-                  flex: 2,
+                  flex: 9,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -84,7 +84,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           style: TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.grey[850],
+                            color: Theme.of(context).primaryColor,
                           ),
                         ),
                       ),

@@ -1,7 +1,7 @@
 import 'package:bubble/bubble.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:linkable/linkable.dart';
 
 class ChatMessageSelf extends StatefulWidget {
   final Map<String, dynamic> messageData;
@@ -30,10 +30,10 @@ class _ChatMessageSelfState extends State<ChatMessageSelf> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Flexible(
-            child: Text(
-              widget.messageData['message'],
+            child: Linkable(
+              text: widget.messageData['message'],
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 14.5,
                 letterSpacing: 0.3,
               ),
             ),
@@ -43,7 +43,7 @@ class _ChatMessageSelfState extends State<ChatMessageSelf> {
             time,
             style: TextStyle(
               color: Colors.grey,
-              fontSize: 12,
+              fontSize: 11.5,
             ),
           ),
         ],
@@ -77,10 +77,10 @@ class _ChatMessageOtherState extends State<ChatMessageOther> {
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            widget.messageData['message'],
+          Linkable(
+            text: widget.messageData['message'],
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 14.5,
               letterSpacing: 0.3,
             ),
           ),
@@ -89,7 +89,7 @@ class _ChatMessageOtherState extends State<ChatMessageOther> {
             time,
             style: TextStyle(
               color: Colors.grey,
-              fontSize: 12,
+              fontSize: 11.5,
             ),
           ),
         ],

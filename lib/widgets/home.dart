@@ -17,11 +17,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   final String uid1 = FirebaseAuth.instance.currentUser.uid;
 
-  List<bool> requirementIsSelected = List.filled(RequirementData().requirementData.length, false);
-  List<bool> stateIsSelected = List.filled(LocationData().locationData.length, false);
+  List<bool> requirementIsSelected =
+      List.filled(RequirementData().requirementData.length, false);
+  List<bool> stateIsSelected =
+      List.filled(LocationData().locationData.length, false);
   List<String> requirementFilters = [];
   List<String> stateFilters = [];
 
@@ -29,7 +30,8 @@ class _HomeState extends State<Home> {
 
   List bothFiltersData;
 
-  void applyFilters(List<bool> reqIsSelected, List<bool> stIsSelected, List<String> requirements, List<String> states) {
+  void applyFilters(List<bool> reqIsSelected, List<bool> stIsSelected,
+      List<String> requirements, List<String> states) {
     Navigator.pop(context);
     setState(() {
       requirementIsSelected = reqIsSelected;
@@ -41,7 +43,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-
     var screenSize = MediaQuery.of(context).size;
     //var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
@@ -62,13 +63,16 @@ class _HomeState extends State<Home> {
                 //color: Theme.of(context).primaryColor,
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(Theme.of(context).primaryColor.withOpacity(1.0), BlendMode.softLight),
+                  colorFilter: ColorFilter.mode(
+                      Theme.of(context).primaryColor.withOpacity(1.0),
+                      BlendMode.softLight),
                   image: AssetImage('assets/images/headbg.png'),
                 ),
               ),
               child: SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                   child: Align(
                     alignment: Alignment.bottomLeft,
                     child: Row(
@@ -101,7 +105,11 @@ class _HomeState extends State<Home> {
                                   isScrollControlled: true,
                                   context: context,
                                   builder: (BuildContext context) {
-                                    return Filters(requirementIsSelected: requirementIsSelected, stateIsSelected: stateIsSelected, applyFilters: applyFilters);
+                                    return Filters(
+                                        requirementIsSelected:
+                                            requirementIsSelected,
+                                        stateIsSelected: stateIsSelected,
+                                        applyFilters: applyFilters);
                                   },
                                 );
                               },
@@ -116,138 +124,150 @@ class _HomeState extends State<Home> {
             ),
           ),
           FutureBuilder<QuerySnapshot>(
-              future: (requirementFilters.isEmpty && stateFilters.isEmpty) ?
-                db.getRequests :
-                (requirementFilters.isNotEmpty) ?
-                db.getRequestsWithRequirementFilter(requirementFilters) :
-                db.getRequestsWithStateFilter((stateFilters.length > 10) ? stateFilters.sublist(0, 10) : stateFilters),
+              future: (requirementFilters.isEmpty && stateFilters.isEmpty)
+                  ? db.getRequests
+                  : (requirementFilters.isNotEmpty)
+                      ? db.getRequestsWithRequirementFilter(
+                          (requirementFilters.length > 10)
+                              ? requirementFilters.sublist(0, 10)
+                              : requirementFilters)
+                      : db.getRequestsWithStateFilter((stateFilters.length > 10)
+                          ? stateFilters.sublist(0, 10)
+                          : stateFilters),
               builder: (context, snapshot) {
                 //if(snapshot.hasData) print(snapshot.data.docs[0].data());
-                if(requirementFilters.isNotEmpty && stateFilters.isNotEmpty) {
+                if (requirementFilters.isNotEmpty && stateFilters.isNotEmpty) {
                   bothFiltersData = snapshot.data.docs.where((element) {
                     return stateFilters.contains(element.data()['state']);
                   }).toList();
                   return Container(
                     height: screenHeight - headerHeight - 60,
-                    child: (snapshot.hasData && bothFiltersData != null && bothFiltersData.length > 0) ? RefreshIndicator(
-                      color: Theme.of(context).primaryColor,
-                      child: ListView.builder(
-                        //shrinkWrap: true,
-                          padding: EdgeInsets.all(20),
-                          itemCount: bothFiltersData.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return RequestCard(
-                              requestData: bothFiltersData[index].data(),
-                              uid1: uid1,
-                            );
-                          }
-                      ),
-                      onRefresh: () {
-                        return Future.delayed(
-                          Duration(seconds: 1), () {
-                          setState(() {
-
-                          });
-                        },
-                        );
-                      },
-                    ) : (snapshot.hasData && bothFiltersData != null && bothFiltersData.length == 0) ?
-                    SingleChildScrollView(
-                      child: Container(
-                        padding: EdgeInsets.all(20),
-                        child: Text(
-                          'No requests available',
-                          style: TextStyle(
-                            color: Colors.grey[850],
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                    ) : (snapshot.hasError) ?
-                    SingleChildScrollView(
-                      child: Container(
-                        padding: EdgeInsets.all(20),
-                        child: Text(
-                          'An error occurred',
-                          style: TextStyle(
-                            color: Colors.grey[850],
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                    ) :
-                    SingleChildScrollView(
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                        child: PlaceholderLines(
-                          count: 3,
-                          animate: true,
-                        ),
-                      ),
-                    ),
+                    child: (snapshot.hasData &&
+                            bothFiltersData != null &&
+                            bothFiltersData.length > 0)
+                        ? RefreshIndicator(
+                            color: Theme.of(context).primaryColor,
+                            child: ListView.builder(
+                                //shrinkWrap: true,
+                                padding: EdgeInsets.all(20),
+                                itemCount: bothFiltersData.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return RequestCard(
+                                    requestData: bothFiltersData[index].data(),
+                                    uid1: uid1,
+                                  );
+                                }),
+                            onRefresh: () {
+                              return Future.delayed(
+                                Duration(seconds: 1),
+                                () {
+                                  setState(() {});
+                                },
+                              );
+                            },
+                          )
+                        : (snapshot.hasData &&
+                                bothFiltersData != null &&
+                                bothFiltersData.length == 0)
+                            ? SingleChildScrollView(
+                                child: Container(
+                                  padding: EdgeInsets.all(20),
+                                  child: Text(
+                                    'No requests available',
+                                    style: TextStyle(
+                                      color: Colors.grey[850],
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : (snapshot.hasError)
+                                ? SingleChildScrollView(
+                                    child: Container(
+                                      padding: EdgeInsets.all(20),
+                                      child: Text(
+                                        'An error occurred',
+                                        style: TextStyle(
+                                          color: Colors.grey[850],
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                : SingleChildScrollView(
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 20, horizontal: 20),
+                                      child: PlaceholderLines(
+                                        count: 3,
+                                        animate: true,
+                                      ),
+                                    ),
+                                  ),
                   );
                 }
                 return Container(
                   height: screenHeight - headerHeight - 60,
-                  child: (snapshot.hasData && snapshot.data.docs.length > 0) ? RefreshIndicator(
-                    color: Theme.of(context).primaryColor,
-                    child: ListView.builder(
-                        //shrinkWrap: true,
-                        padding: EdgeInsets.all(20),
-                        itemCount: snapshot.data.docs.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return RequestCard(
-                            requestData: snapshot.data.docs[index].data(),
-                            uid1: uid1,
-                          );
-                        }
-                    ),
-                    onRefresh: () {
-                      return Future.delayed(
-                        Duration(seconds: 1), () {
-                          setState(() {
-
-                          });
-                        },
-                      );
-                    },
-                  ) : (snapshot.hasData && snapshot.data.docs.length == 0) ?
-                  SingleChildScrollView(
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      child: Text(
-                        'No requests available',
-                        style: TextStyle(
-                          color: Colors.grey[850],
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                  ) : (snapshot.hasError) ?
-                  SingleChildScrollView(
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      child: Text(
-                        'An error occurred',
-                        style: TextStyle(
-                          color: Colors.grey[850],
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                  ) :
-                  SingleChildScrollView(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                      child: PlaceholderLines(
-                        count: 3,
-                        animate: true,
-                      ),
-                    ),
-                  ),
+                  child: (snapshot.hasData && snapshot.data.docs.length > 0)
+                      ? RefreshIndicator(
+                          color: Theme.of(context).primaryColor,
+                          child: ListView.builder(
+                              //shrinkWrap: true,
+                              padding: EdgeInsets.all(20),
+                              itemCount: snapshot.data.docs.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return RequestCard(
+                                  requestData: snapshot.data.docs[index].data(),
+                                  uid1: uid1,
+                                );
+                              }),
+                          onRefresh: () {
+                            return Future.delayed(
+                              Duration(seconds: 1),
+                              () {
+                                setState(() {});
+                              },
+                            );
+                          },
+                        )
+                      : (snapshot.hasData && snapshot.data.docs.length == 0)
+                          ? SingleChildScrollView(
+                              child: Container(
+                                padding: EdgeInsets.all(20),
+                                child: Text(
+                                  'No requests available',
+                                  style: TextStyle(
+                                    color: Colors.grey[850],
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ),
+                            )
+                          : (snapshot.hasError)
+                              ? SingleChildScrollView(
+                                  child: Container(
+                                    padding: EdgeInsets.all(20),
+                                    child: Text(
+                                      'An error occurred',
+                                      style: TextStyle(
+                                        color: Colors.grey[850],
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : SingleChildScrollView(
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 20, horizontal: 20),
+                                    child: PlaceholderLines(
+                                      count: 3,
+                                      animate: true,
+                                    ),
+                                  ),
+                                ),
                 );
-              }
-          ),
+              }),
         ],
       ),
     );

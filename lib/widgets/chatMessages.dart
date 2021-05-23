@@ -77,11 +77,13 @@ class _ChatMessageOtherState extends State<ChatMessageOther> {
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Linkable(
-            text: widget.messageData['message'],
-            style: TextStyle(
-              fontSize: 14.5,
-              letterSpacing: 0.3,
+          Flexible(
+            child: Linkable(
+              text: widget.messageData['message'],
+              style: TextStyle(
+                fontSize: 14.5,
+                letterSpacing: 0.3,
+              ),
             ),
           ),
           SizedBox(width: 10),

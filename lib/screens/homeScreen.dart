@@ -1,7 +1,9 @@
-import 'package:covid_app/widgets/addRequest.dart';
+import 'package:covid_app/services/database.dart';
 import 'package:covid_app/widgets/bottomNavBar.dart';
 import 'package:covid_app/widgets/home.dart';
 import 'package:covid_app/widgets/profile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,6 +21,23 @@ class _HomeScreenState extends State<HomeScreen> {
     Home(),
     Profile(),
   ];
+
+  void saveFCMToken(String token) async {
+    User _user = FirebaseAuth.instance.currentUser;
+    await DatabaseService(uid: _user.uid).saveFCMToken(token);
+  }
+
+  void handleToken() async {
+    String _fcmToken = await FirebaseMessaging.instance.getToken();
+    saveFCMToken(_fcmToken);
+    FirebaseMessaging.instance.onTokenRefresh.listen(saveFCMToken);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    handleToken();
+  }
 
   @override
   Widget build(BuildContext context) {

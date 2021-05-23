@@ -126,7 +126,7 @@ class LocationData {
       ]
     },
     {
-      "state":"Chandigarh (UT)",
+      "state":"Chandigarh",
       "districts":[
         "Chandigarh"
       ]
@@ -164,13 +164,13 @@ class LocationData {
       ]
     },
     {
-      "state":"Dadra and Nagar Haveli (UT)",
+      "state":"Dadra and Nagar Haveli",
       "districts":[
         "Dadra & Nagar Haveli"
       ]
     },
     {
-      "state":"Daman and Diu (UT)",
+      "state":"Daman and Diu",
       "districts":[
         "Daman",
         "Diu"
@@ -392,7 +392,7 @@ class LocationData {
       ]
     },
     {
-      "state":"Lakshadweep (UT)",
+      "state":"Lakshadweep",
       "districts":[
         "Agatti",
         "Amini",
@@ -605,7 +605,7 @@ class LocationData {
       ]
     },
     {
-      "state":"Puducherry (UT)",
+      "state":"Puducherry",
       "districts":[
         "Karaikal",
         "Mahe",

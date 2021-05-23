@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_initicon/flutter_initicon.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:intl/intl.dart';
 
 class MyMessages extends StatefulWidget {
   const MyMessages({Key key}) : super(key: key);
@@ -82,18 +83,44 @@ class ChatListItem extends StatelessWidget {
                   children: [
                     Initicon(
                       text: (snapshot.hasData) ? snapshot.data.name : '',
-                      size: 40,
+                      size: 42,
                     ),
                     SizedBox(width: 20),
                     Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      child: Row(
                         children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  (snapshot.hasData) ? snapshot.data.name : '',
+                                  style: TextStyle(
+                                    color: Colors.grey[850],
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 1.5),
+                                  child: Text(
+                                    (data['lastMessageBy'] != data['uid']) ? 'You: ${data['lastMessage'].split('\n')[0]}' : data['lastMessage'].split('\n')[0],
+                                    style: TextStyle(
+                                      color: Colors.grey[600],
+                                      fontSize: 12.5,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: 10),
                           Text(
-                            (snapshot.hasData) ? snapshot.data.name : '',
+                            DateFormat.jm().format(DateTime.fromMillisecondsSinceEpoch(data['lastMessageAt'].seconds * 1000)),
                             style: TextStyle(
-                              color: Colors.grey[850],
-                              fontSize: 15,
+                              color: Colors.grey[600],
+                              fontSize: 12.5,
                             ),
                           ),
                         ],

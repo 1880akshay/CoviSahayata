@@ -8,7 +8,6 @@ import 'package:covid_app/services/locationData.dart';
 import 'package:covid_app/services/requirementData.dart';
 
 class AddRequest extends StatefulWidget {
-
   const AddRequest({Key key}) : super(key: key);
 
   @override
@@ -16,7 +15,6 @@ class AddRequest extends StatefulWidget {
 }
 
 class _AddRequestState extends State<AddRequest> {
-
   FirebaseAuth _auth;
   User _user;
 
@@ -48,7 +46,7 @@ class _AddRequestState extends State<AddRequest> {
     _auth = FirebaseAuth.instance;
     _user = _auth.currentUser;
     DatabaseService(uid: _user.uid).getProfile.listen((value) {
-      if(value != null) {
+      if (value != null) {
         primaryNumber = value.number;
       }
     });
@@ -58,10 +56,9 @@ class _AddRequestState extends State<AddRequest> {
   void toggleRequirementSelection(String req) {
     setState(() {
       userRequirementEdited = true;
-      if(userRequirements.contains(req)) {
+      if (userRequirements.contains(req)) {
         userRequirements.remove(req);
-      }
-      else {
+      } else {
         userRequirements.add(req);
       }
     });
@@ -72,16 +69,26 @@ class _AddRequestState extends State<AddRequest> {
     setState(() {
       submitClicked = true;
     });
-    if(_addRequestFormKey.currentState.validate() && userRequirements.isNotEmpty) {
+    if (_addRequestFormKey.currentState.validate() &&
+        userRequirements.isNotEmpty) {
       context.loaderOverlay.show();
       try {
-        await DatabaseService(uid: _user.uid).addRequest(userRequirements, selectedState, selectedDistrict, '+91'+secondaryNumber, primaryNumber);
+        await DatabaseService(uid: _user.uid).addRequest(
+            userRequirements,
+            selectedState,
+            selectedDistrict,
+            '+91' + secondaryNumber,
+            primaryNumber);
         context.loaderOverlay.hide();
         Navigator.pop(context);
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Request added successfully!'), behavior: SnackBarBehavior.floating,));
-      } catch(e) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('Request added successfully!'),
+          behavior: SnackBarBehavior.floating,
+        ));
+      } catch (e) {
         context.loaderOverlay.hide();
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Something went wrong! Please try again')));
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Something went wrong! Please try again')));
       }
     }
   }
@@ -115,18 +122,24 @@ class _AddRequestState extends State<AddRequest> {
             Wrap(
               alignment: WrapAlignment.center,
               direction: Axis.horizontal,
-              children: requirementData.map((e) => RequirementChip(label: e, toggle: toggleRequirementSelection)).toList().cast<Widget>(),
+              children: requirementData
+                  .map((e) => RequirementChip(
+                      label: e, toggle: toggleRequirementSelection))
+                  .toList()
+                  .cast<Widget>(),
             ),
-            if(userRequirements.isEmpty && (userRequirementEdited || submitClicked)) Padding(
-              padding: const EdgeInsets.all(6),
-              child: Text(
-                'Please select at least one requirement',
-                style: TextStyle(
-                  color: Colors.red[700],
-                  fontSize: 12,
+            if (userRequirements.isEmpty &&
+                (userRequirementEdited || submitClicked))
+              Padding(
+                padding: const EdgeInsets.all(6),
+                child: Text(
+                  'Please select at least one requirement',
+                  style: TextStyle(
+                    color: Colors.red[700],
+                    fontSize: 12,
+                  ),
                 ),
               ),
-            ),
             SizedBox(height: 20),
             TypeAheadFormField(
               key: _stateKey,
@@ -138,7 +151,7 @@ class _AddRequestState extends State<AddRequest> {
                     selectedState = '';
                     districtEnabled = false;
                     districtData = [];
-                    this._districtController.text = '';
+                    this._districtController.clear();
                   });
                 },
                 controller: this._stateController,
@@ -168,7 +181,9 @@ class _AddRequestState extends State<AddRequest> {
               ),
               suggestionsCallback: (pattern) {
                 return locationData.where((element) {
-                  return element['state'].toLowerCase().contains(pattern.toLowerCase());
+                  return element['state']
+                      .toLowerCase()
+                      .contains(pattern.toLowerCase());
                 });
               },
               itemBuilder: (context, suggestion) {
@@ -176,9 +191,8 @@ class _AddRequestState extends State<AddRequest> {
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.transparent,
-                      border: Border(
-                        bottom: BorderSide(color: Colors.grey[300])
-                      ),
+                      border:
+                          Border(bottom: BorderSide(color: Colors.grey[300])),
                     ),
                     margin: EdgeInsets.all(2),
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -199,9 +213,7 @@ class _AddRequestState extends State<AddRequest> {
                 return Container(
                   decoration: BoxDecoration(
                     color: Colors.transparent,
-                    border: Border(
-                        bottom: BorderSide(color: Colors.grey[300])
-                    ),
+                    border: Border(bottom: BorderSide(color: Colors.grey[300])),
                   ),
                   margin: EdgeInsets.all(2),
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -218,9 +230,7 @@ class _AddRequestState extends State<AddRequest> {
                 return Container(
                   decoration: BoxDecoration(
                     color: Colors.transparent,
-                    border: Border(
-                        bottom: BorderSide(color: Colors.grey[300])
-                    ),
+                    border: Border(bottom: BorderSide(color: Colors.grey[300])),
                   ),
                   margin: EdgeInsets.all(2),
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -237,11 +247,12 @@ class _AddRequestState extends State<AddRequest> {
                 setState(() {
                   selectedState = suggestion['state'];
                   districtEnabled = true;
-                  districtData = locationData.firstWhere((element) => element['state'] == selectedState)['districts'];
+                  districtData = locationData.firstWhere((element) =>
+                      element['state'] == selectedState)['districts'];
                 });
               },
               validator: (value) {
-                if (value==null || value.isEmpty) {
+                if (value == null || value.isEmpty) {
                   return 'Please select a state';
                 }
                 return null;
@@ -301,9 +312,8 @@ class _AddRequestState extends State<AddRequest> {
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.transparent,
-                      border: Border(
-                          bottom: BorderSide(color: Colors.grey[300])
-                      ),
+                      border:
+                          Border(bottom: BorderSide(color: Colors.grey[300])),
                     ),
                     margin: EdgeInsets.all(2),
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -328,7 +338,7 @@ class _AddRequestState extends State<AddRequest> {
                 });
               },
               validator: (value) {
-                if (value==null || value.isEmpty) {
+                if (value == null || value.isEmpty) {
                   return 'Please select a district';
                 }
                 return null;
@@ -340,7 +350,7 @@ class _AddRequestState extends State<AddRequest> {
               validator: (value) {
                 String regex = '^[0-9]*\$';
                 RegExp regExp = new RegExp(regex);
-                if(regExp.hasMatch(value)) return null;
+                if (regExp.hasMatch(value)) return null;
                 return 'Invalid Phone number';
               },
               onChanged: (value) {
@@ -349,7 +359,9 @@ class _AddRequestState extends State<AddRequest> {
                   secondaryNumber = value;
                 });
               },
-              onFieldSubmitted: (value) {submitAddRequest();},
+              onFieldSubmitted: (value) {
+                submitAddRequest();
+              },
               keyboardType: TextInputType.number,
               style: TextStyle(
                 fontSize: 14,
@@ -388,16 +400,16 @@ class _AddRequestState extends State<AddRequest> {
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: Text(
                         'Add Request',
-                        style: TextStyle(
-                            fontSize: 15.0
-                        ),
+                        style: TextStyle(fontSize: 15.0),
                       ),
                     ),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                            (Set<MaterialState> states) {
+                        (Set<MaterialState> states) {
                           if (states.contains(MaterialState.pressed))
-                            return Theme.of(context).primaryColor.withOpacity(0.7);
+                            return Theme.of(context)
+                                .primaryColor
+                                .withOpacity(0.7);
                           return Theme.of(context).primaryColor;
                         },
                       ),
@@ -423,14 +435,12 @@ class RequirementChip extends StatefulWidget {
 }
 
 class _RequirementChipState extends State<RequirementChip> {
-
   Color labelColor = Colors.grey[850];
   bool checkmark = false;
   bool selected = false;
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5),
       child: FilterChip(
@@ -446,14 +456,13 @@ class _RequirementChipState extends State<RequirementChip> {
         selected: selected,
         onSelected: (bool value) {
           widget.toggle(widget.label);
-          if(value) {
+          if (value) {
             setState(() {
               labelColor = Colors.white;
               checkmark = true;
               selected = true;
             });
-          }
-          else {
+          } else {
             setState(() {
               labelColor = Colors.grey[850];
               checkmark = false;
@@ -465,4 +474,3 @@ class _RequirementChipState extends State<RequirementChip> {
     );
   }
 }
-

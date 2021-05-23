@@ -7,14 +7,18 @@ class Filters extends StatefulWidget {
   final List<bool> requirementIsSelected;
   final List<bool> stateIsSelected;
   final Function applyFilters;
-  const Filters({Key key, this.requirementIsSelected, this.stateIsSelected, this.applyFilters}) : super(key: key);
+  const Filters(
+      {Key key,
+      this.requirementIsSelected,
+      this.stateIsSelected,
+      this.applyFilters})
+      : super(key: key);
 
   @override
   _FiltersState createState() => _FiltersState();
 }
 
 class _FiltersState extends State<Filters> {
-
   int selectedIndex = 0;
 
   void selectTab(int index) {
@@ -30,27 +34,23 @@ class _FiltersState extends State<Filters> {
   List<String> stateFilters = [];
 
   void editFilterRequirement(String req) {
-    if(requirementFilters.contains(req)) {
+    if (requirementFilters.contains(req)) {
       requirementFilters.remove(req);
-    }
-    else {
+    } else {
       requirementFilters.add(req);
     }
   }
 
   void editFilterState(String state) {
-    if(stateFilters.contains(state)) {
+    if (stateFilters.contains(state)) {
       stateFilters.remove(state);
-    }
-    else {
+    } else {
       stateFilters.add(state);
     }
   }
 
   void reRender() {
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   @override
@@ -59,13 +59,13 @@ class _FiltersState extends State<Filters> {
     localStateIsSelected = List.from(widget.stateIsSelected);
     List<String> requirementData = RequirementData().requirementData;
     List<Map<String, dynamic>> locationData = LocationData().locationData;
-    for(int i=0; i<requirementData.length; i++) {
-      if(widget.requirementIsSelected[i]) {
+    for (int i = 0; i < requirementData.length; i++) {
+      if (widget.requirementIsSelected[i]) {
         requirementFilters.add(requirementData[i]);
       }
     }
-    for(int i=0; i<locationData.length; i++) {
-      if(widget.stateIsSelected[i]) {
+    for (int i = 0; i < locationData.length; i++) {
+      if (widget.stateIsSelected[i]) {
         stateFilters.add(locationData[i]['state']);
       }
     }
@@ -74,18 +74,23 @@ class _FiltersState extends State<Filters> {
 
   @override
   Widget build(BuildContext context) {
-
     var screenSize = MediaQuery.of(context).size;
     //var screenWidth = screenSize.width;
     var screenHeight = screenSize.height;
 
     List<Widget> filterPages = [
-      RequirementsFilter(isSelected: localRequirementIsSelected, editFilterRequirement: editFilterRequirement, reRender: reRender),
-      StateFilter(isSelected: localStateIsSelected, editFilterState: editFilterState, reRender: reRender),
+      RequirementsFilter(
+          isSelected: localRequirementIsSelected,
+          editFilterRequirement: editFilterRequirement,
+          reRender: reRender),
+      StateFilter(
+          isSelected: localStateIsSelected,
+          editFilterState: editFilterState,
+          reRender: reRender),
     ];
 
     return Container(
-      height: screenHeight*0.75,
+      height: screenHeight * 0.75,
       color: Colors.white,
       child: Column(
         children: [
@@ -109,10 +114,12 @@ class _FiltersState extends State<Filters> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        for(int i=0; i<localRequirementIsSelected.length; i++) {
+                        for (int i = 0;
+                            i < localRequirementIsSelected.length;
+                            i++) {
                           localRequirementIsSelected[i] = false;
                         }
-                        for(int i=0; i<localStateIsSelected.length; i++) {
+                        for (int i = 0; i < localStateIsSelected.length; i++) {
                           localStateIsSelected[i] = false;
                         }
                         requirementFilters = [];
@@ -148,14 +155,18 @@ class _FiltersState extends State<Filters> {
                           isActive: (selectedIndex == 0) ? true : false,
                           index: 0,
                           selectTab: selectTab,
-                          isFilterUsed: (localRequirementIsSelected != null) ? localRequirementIsSelected.contains(true) : false,
+                          isFilterUsed: (localRequirementIsSelected != null)
+                              ? localRequirementIsSelected.contains(true)
+                              : false,
                         ),
                         FilterLabel(
                           label: 'State / UT',
                           isActive: (selectedIndex == 1) ? true : false,
                           index: 1,
                           selectTab: selectTab,
-                          isFilterUsed: (localStateIsSelected != null) ? localStateIsSelected.contains(true) : false,
+                          isFilterUsed: (localStateIsSelected != null)
+                              ? localStateIsSelected.contains(true)
+                              : false,
                         ),
                       ],
                     ),
@@ -164,9 +175,8 @@ class _FiltersState extends State<Filters> {
                 Expanded(
                   flex: 3,
                   child: Container(
-                    margin: EdgeInsets.only(top: 2.5, bottom: 2.5),
-                    child: filterPages.elementAt(selectedIndex)
-                  ),
+                      margin: EdgeInsets.only(top: 2.5, bottom: 2.5),
+                      child: filterPages.elementAt(selectedIndex)),
                 ),
               ],
             ),
@@ -174,7 +184,10 @@ class _FiltersState extends State<Filters> {
           Container(
             decoration: BoxDecoration(
               boxShadow: [
-                BoxShadow(offset: Offset(0, -2), color: Colors.grey[350], blurRadius: 2),
+                BoxShadow(
+                    offset: Offset(0, -2),
+                    color: Colors.grey[350],
+                    blurRadius: 2),
               ],
             ),
             child: Row(
@@ -182,7 +195,9 @@ class _FiltersState extends State<Filters> {
                 Expanded(
                   flex: 1,
                   child: ElevatedButton(
-                    onPressed: () {Navigator.pop(context);},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     child: Text(
                       'CLOSE',
                       style: TextStyle(
@@ -193,10 +208,13 @@ class _FiltersState extends State<Filters> {
                       ),
                     ),
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.white),
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 10, vertical: 13)),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder()),
+                      padding: MaterialStateProperty.all(
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 13)),
+                      shape:
+                          MaterialStateProperty.all(RoundedRectangleBorder()),
                     ),
                   ),
                 ),
@@ -204,7 +222,11 @@ class _FiltersState extends State<Filters> {
                   flex: 1,
                   child: ElevatedButton(
                     onPressed: () {
-                      widget.applyFilters(localRequirementIsSelected, localStateIsSelected, requirementFilters, stateFilters);
+                      widget.applyFilters(
+                          localRequirementIsSelected,
+                          localStateIsSelected,
+                          requirementFilters,
+                          stateFilters);
                     },
                     child: Text(
                       'APPLY',
@@ -219,13 +241,18 @@ class _FiltersState extends State<Filters> {
                       backgroundColor: MaterialStateProperty.resolveWith<Color>(
                         (Set<MaterialState> states) {
                           if (states.contains(MaterialState.pressed))
-                            return Theme.of(context).primaryColor.withOpacity(0.7);
-                          return Theme.of(context).primaryColor; // Use the component's default.
+                            return Theme.of(context)
+                                .primaryColor
+                                .withOpacity(0.7);
+                          return Theme.of(context)
+                              .primaryColor; // Use the component's default.
                         },
                       ),
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 10, vertical: 13)),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder()),
+                      padding: MaterialStateProperty.all(
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 13)),
+                      shape:
+                          MaterialStateProperty.all(RoundedRectangleBorder()),
                     ),
                   ),
                 ),
@@ -244,18 +271,26 @@ class FilterLabel extends StatefulWidget {
   final int index;
   final Function selectTab;
   final isFilterUsed;
-  const FilterLabel({Key key, this.label, this.isActive, this.index, this.selectTab, this.isFilterUsed}) : super(key: key);
+  const FilterLabel(
+      {Key key,
+      this.label,
+      this.isActive,
+      this.index,
+      this.selectTab,
+      this.isFilterUsed})
+      : super(key: key);
 
   @override
   _FilterLabelState createState() => _FilterLabelState();
 }
 
 class _FilterLabelState extends State<FilterLabel> {
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {widget.selectTab(widget.index);},
+      onTap: () {
+        widget.selectTab(widget.index);
+      },
       child: Container(
         color: (widget.isActive) ? Colors.white : Colors.transparent,
         child: Row(
@@ -270,7 +305,8 @@ class _FilterLabelState extends State<FilterLabel> {
                     fontSize: 14,
                     color: Colors.grey[850],
                     letterSpacing: 0.2,
-                    fontWeight: (widget.isActive) ? FontWeight.w600 : FontWeight.normal,
+                    fontWeight:
+                        (widget.isActive) ? FontWeight.w600 : FontWeight.normal,
                   ),
                 ),
               ),
@@ -280,7 +316,9 @@ class _FilterLabelState extends State<FilterLabel> {
               height: 6,
               width: 6,
               decoration: BoxDecoration(
-                color: (widget.isFilterUsed) ? Theme.of(context).primaryColor : Colors.transparent,
+                color: (widget.isFilterUsed)
+                    ? Theme.of(context).primaryColor
+                    : Colors.transparent,
                 shape: BoxShape.circle,
               ),
             ),
@@ -295,20 +333,26 @@ class RequirementsFilter extends StatefulWidget {
   final List<bool> isSelected;
   final Function editFilterRequirement;
   final Function reRender;
-  const RequirementsFilter({Key key, this.isSelected, this.editFilterRequirement, this.reRender}) : super(key: key);
+  const RequirementsFilter(
+      {Key key, this.isSelected, this.editFilterRequirement, this.reRender})
+      : super(key: key);
 
   @override
   _RequirementsFilterState createState() => _RequirementsFilterState();
 }
 
 class _RequirementsFilterState extends State<RequirementsFilter> {
-
   List<String> requirementData = RequirementData().requirementData;
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      separatorBuilder: (BuildContext context, int index) => Divider(height: 0.5, color: Colors.grey[600], endIndent: 10, indent: 10, thickness: 0.2),
+      separatorBuilder: (BuildContext context, int index) => Divider(
+          height: 0.5,
+          color: Colors.grey[600],
+          endIndent: 10,
+          indent: 10,
+          thickness: 0.2),
       itemCount: requirementData.length,
       itemBuilder: (BuildContext context, int index) {
         return CheckboxListTile(
@@ -327,7 +371,7 @@ class _RequirementsFilterState extends State<RequirementsFilter> {
           activeColor: Theme.of(context).primaryColor,
           onChanged: (bool value) {
             setState(() {
-              widget.isSelected[index]=value;
+              widget.isSelected[index] = value;
             });
             widget.editFilterRequirement(requirementData[index]);
             widget.reRender();
@@ -342,20 +386,26 @@ class StateFilter extends StatefulWidget {
   final List<bool> isSelected;
   final Function editFilterState;
   final Function reRender;
-  const StateFilter({Key key, this.isSelected, this.editFilterState, this.reRender}) : super(key: key);
+  const StateFilter(
+      {Key key, this.isSelected, this.editFilterState, this.reRender})
+      : super(key: key);
 
   @override
   _StateFilterState createState() => _StateFilterState();
 }
 
 class _StateFilterState extends State<StateFilter> {
-
   List<Map<String, dynamic>> locationData = LocationData().locationData;
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      separatorBuilder: (BuildContext context, int index) => Divider(height: 0.5, color: Colors.grey[600], endIndent: 10, indent: 10, thickness: 0.2),
+      separatorBuilder: (BuildContext context, int index) => Divider(
+          height: 0.5,
+          color: Colors.grey[600],
+          endIndent: 10,
+          indent: 10,
+          thickness: 0.2),
       itemCount: locationData.length,
       itemBuilder: (BuildContext context, int index) {
         return CheckboxListTile(
@@ -374,7 +424,7 @@ class _StateFilterState extends State<StateFilter> {
           activeColor: Theme.of(context).primaryColor,
           onChanged: (bool value) {
             setState(() {
-              widget.isSelected[index]=value;
+              widget.isSelected[index] = value;
             });
             widget.editFilterState(locationData[index]['state']);
             widget.reRender();
@@ -384,6 +434,3 @@ class _StateFilterState extends State<StateFilter> {
     );
   }
 }
-
-
-

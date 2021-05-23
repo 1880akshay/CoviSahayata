@@ -9,20 +9,17 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   void checkLoginStatus() {
     Future.delayed(Duration(seconds: 1), () {
-
       FirebaseAuth _auth = FirebaseAuth.instance;
       User _user = _auth.currentUser;
 
       //print(_user.uid);
-      if(_user == null) {
+      if (_user == null) {
         Future(() {
           Navigator.pushReplacementNamed(context, '/signup');
         });
-      }
-      else {
+      } else {
         Future(() {
           Navigator.pushReplacementNamed(context, '/home');
         });
@@ -60,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       ),
                       Expanded(
                         flex: 16,
-                        child: Image.asset('assets/images/icon.png'), //TODO: design app logo
+                        child: Image.asset('assets/images/icon.png'),
                       ),
                       Expanded(
                         flex: 19,
@@ -78,9 +75,10 @@ class _SplashScreenState extends State<SplashScreen> {
                         child: SizedBox(),
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                        padding:
+                            const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                         child: Text(
-                          'CoviSahayata', //TODO: think of app name
+                          'CoviSahayata',
                           style: TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,

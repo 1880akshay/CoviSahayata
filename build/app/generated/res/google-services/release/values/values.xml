@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">1072366778799-lj8l14aupf6b985gu40rrqkbtihdatli.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">1072366778799</string>
+    <string name="google_api_key" translatable="false">AIzaSyCUsxkHGtNcPOX8yJnRc0-Na3voaBfhbIM</string>
+    <string name="google_app_id" translatable="false">1:1072366778799:android:74a3abc43737793d03575a</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCUsxkHGtNcPOX8yJnRc0-Na3voaBfhbIM</string>
+    <string name="google_storage_bucket" translatable="false">covid-app-project.appspot.com</string>
+    <string name="project_id" translatable="false">covid-app-project</string>
+</resources>

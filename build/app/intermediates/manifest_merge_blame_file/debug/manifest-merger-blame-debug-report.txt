@@ -1,0 +1,498 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.project.covid_app"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="30" />
+10    <!--
+11         Flutter needs it to communicate with the running application
+12         to allow setting breakpoints, to provide hot reload, etc.
+13    -->
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:3:4-66
+14-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:3:21-63
+15
+16    <queries>
+16-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:4:5-17:15
+17        <intent>
+17-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:5:9-8:18
+18            <action android:name="android.intent.action.DIAL" />
+18-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:6:13-65
+18-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:6:21-62
+19
+20            <data android:scheme="tel" />
+20-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:7:13-42
+20-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:7:19-39
+21        </intent>
+22        <intent>
+22-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:9:9-12:18
+23            <action android:name="android.intent.action.VIEW" />
+23-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:10:13-65
+23-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:10:21-62
+24
+25            <data android:scheme="https" />
+25-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:7:13-42
+25-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:7:19-39
+26        </intent>
+27        <intent>
+27-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:13:9-16:18
+28            <action android:name="android.intent.action.SEND" />
+28-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:14:13-65
+28-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:14:21-62
+29
+30            <data android:mimeType="*/*" />
+30-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:7:13-42
+31        </intent>
+32    </queries>
+33
+34    <uses-permission android:name="android.permission.WAKE_LOCK" />
+34-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:8:5-68
+34-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:8:22-65
+35    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+35-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-79
+35-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-76
+36    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+36-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-81
+36-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:7:22-78
+37    <uses-permission android:name="android.permission.VIBRATE" />
+37-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:8:5-66
+37-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:8:22-63
+38    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+38-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-81
+38-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-78
+39    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+39-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-3\e32f30b532181ec7024c331ab6d57307\transformed\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:25:5-82
+39-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-3\e32f30b532181ec7024c331ab6d57307\transformed\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:25:22-79
+40
+41    <application
+41-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:18:4-63:19
+42        android:name="com.project.covid_app.Application"
+42-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:19:9-36
+43        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+43-->[androidx.core:core:1.5.0-rc01] C:\Users\hp\.gradle\caches\transforms-3\bb5408029b9316e92ce8d0d927b702a2\transformed\core-1.5.0-rc01\AndroidManifest.xml:24:18-86
+44        android:debuggable="true"
+45        android:icon="@mipmap/ic_launcher"
+45-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:21:9-43
+46        android:label="CoviSahayata" >
+46-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:20:9-37
+47        <activity
+47-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:22:9-54:20
+48            android:name="com.project.covid_app.MainActivity"
+48-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:23:13-41
+49            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+49-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:26:13-163
+50            android:hardwareAccelerated="true"
+50-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:27:13-47
+51            android:launchMode="singleTop"
+51-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:24:13-43
+52            android:theme="@style/LaunchTheme"
+52-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:25:13-47
+53            android:windowSoftInputMode="adjustResize" >
+53-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:28:13-55
+54
+55            <!--
+56                 Specifies an Android theme to apply to this Activity as soon as
+57                 the Android process has started. This theme is visible to the user
+58                 while the Flutter UI initializes. After that, this theme continues
+59                 to determine the Window background behind the Flutter UI.
+60            -->
+61            <meta-data
+61-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:33:13-36:17
+62                android:name="io.flutter.embedding.android.NormalTheme"
+62-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:34:15-70
+63                android:resource="@style/NormalTheme" />
+63-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:35:15-52
+64            <!--
+65                 Displays an Android View that continues showing the launch screen
+66                 Drawable until Flutter paints its first frame, then this splash
+67                 screen fades out. A splash screen is useful to avoid any visual
+68                 gap between the end of Android's launch screen and the painting of
+69                 Flutter's first frame.
+70            -->
+71            <meta-data
+71-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:42:13-45:17
+72                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+72-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:43:15-79
+73                android:resource="@drawable/launch_background" />
+73-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:44:15-61
+74
+75            <intent-filter>
+75-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:46:13-49:29
+76                <action android:name="android.intent.action.MAIN" />
+76-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:47:17-68
+76-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:47:25-66
+77
+78                <category android:name="android.intent.category.LAUNCHER" />
+78-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:48:17-76
+78-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:48:27-74
+79            </intent-filter>
+80            <intent-filter>
+80-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:50:13-53:29
+81                <action android:name="FLUTTER_NOTIFICATION_CLICK" />
+81-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:51:17-69
+81-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:51:25-66
+82
+83                <category android:name="android.intent.category.DEFAULT" />
+83-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:52:17-76
+83-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:52:27-73
+84            </intent-filter>
+85        </activity>
+86        <!--
+87             Don't delete the meta-data below.
+88             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+89        -->
+90        <meta-data
+90-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:57:9-59:33
+91            android:name="flutterEmbedding"
+91-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:58:13-44
+92            android:value="2" />
+92-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:59:13-30
+93        <meta-data
+93-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:60:9-62:54
+94            android:name="com.google.firebase.messaging.default_notification_channel_id"
+94-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:61:12-88
+95            android:value="high_importance_channel" />
+95-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:62:12-51
+96
+97        <service
+97-->[:firebase_auth] C:\Users\hp\Desktop\covid_app\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-12:19
+98            android:name="com.google.firebase.components.ComponentDiscoveryService"
+98-->[:firebase_auth] C:\Users\hp\Desktop\covid_app\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:8:18-89
+99            android:directBootAware="true"
+99-->[com.google.firebase:firebase-common:20.0.0] C:\Users\hp\.gradle\caches\transforms-3\9ce296fc9f4252fa60c941310742cb9c\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:35:13-43
+100            android:exported="false" >
+100-->[com.google.firebase:firebase-auth-ktx:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\1ab0fc91fcbb8c074d7b080f10e79c86\transformed\jetified-firebase-auth-ktx-21.0.1\AndroidManifest.xml:10:13-37
+101            <meta-data
+101-->[:firebase_auth] C:\Users\hp\Desktop\covid_app\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-11:85
+102                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
+102-->[:firebase_auth] C:\Users\hp\Desktop\covid_app\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:17-124
+103                android:value="com.google.firebase.components.ComponentRegistrar" />
+103-->[:firebase_auth] C:\Users\hp\Desktop\covid_app\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:11:17-82
+104            <meta-data
+104-->[:cloud_firestore] C:\Users\hp\Desktop\covid_app\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-11:85
+105                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
+105-->[:cloud_firestore] C:\Users\hp\Desktop\covid_app\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:10:17-134
+106                android:value="com.google.firebase.components.ComponentRegistrar" />
+106-->[:cloud_firestore] C:\Users\hp\Desktop\covid_app\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:11:17-82
+107            <meta-data
+107-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:34:13-36:85
+108                android:name="com.google.firebase.components:io.flutter.plugins.firebase.messaging.FlutterFirebaseAppRegistrar"
+108-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:35:17-128
+109                android:value="com.google.firebase.components.ComponentRegistrar" />
+109-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:36:17-82
+110            <meta-data
+110-->[:firebase_core] C:\Users\hp\Desktop\covid_app\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-11:85
+111                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+111-->[:firebase_core] C:\Users\hp\Desktop\covid_app\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:10:17-124
+112                android:value="com.google.firebase.components.ComponentRegistrar" />
+112-->[:firebase_core] C:\Users\hp\Desktop\covid_app\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:17-82
+113            <meta-data
+113-->[com.google.firebase:firebase-auth-ktx:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\1ab0fc91fcbb8c074d7b080f10e79c86\transformed\jetified-firebase-auth-ktx-21.0.1\AndroidManifest.xml:11:13-13:85
+114                android:name="com.google.firebase.components:com.google.firebase.auth.ktx.FirebaseAuthKtxRegistrar"
+114-->[com.google.firebase:firebase-auth-ktx:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\1ab0fc91fcbb8c074d7b080f10e79c86\transformed\jetified-firebase-auth-ktx-21.0.1\AndroidManifest.xml:12:17-116
+115                android:value="com.google.firebase.components.ComponentRegistrar" />
+115-->[com.google.firebase:firebase-auth-ktx:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\1ab0fc91fcbb8c074d7b080f10e79c86\transformed\jetified-firebase-auth-ktx-21.0.1\AndroidManifest.xml:13:17-82
+116            <meta-data
+116-->[com.google.firebase:firebase-common-ktx:20.0.0] C:\Users\hp\.gradle\caches\transforms-3\eca60ba2825b0ea0bc91c253b9f1a0be\transformed\jetified-firebase-common-ktx-20.0.0\AndroidManifest.xml:15:13-17:85
+117                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar"
+117-->[com.google.firebase:firebase-common-ktx:20.0.0] C:\Users\hp\.gradle\caches\transforms-3\eca60ba2825b0ea0bc91c253b9f1a0be\transformed\jetified-firebase-common-ktx-20.0.0\AndroidManifest.xml:16:17-113
+118                android:value="com.google.firebase.components.ComponentRegistrar" />
+118-->[com.google.firebase:firebase-common-ktx:20.0.0] C:\Users\hp\.gradle\caches\transforms-3\eca60ba2825b0ea0bc91c253b9f1a0be\transformed\jetified-firebase-common-ktx-20.0.0\AndroidManifest.xml:17:17-82
+119            <meta-data
+119-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-3\e32f30b532181ec7024c331ab6d57307\transformed\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:52:13-54:85
+120                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+120-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-3\e32f30b532181ec7024c331ab6d57307\transformed\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:53:17-119
+121                android:value="com.google.firebase.components.ComponentRegistrar" />
+121-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-3\e32f30b532181ec7024c331ab6d57307\transformed\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:54:17-82
+122            <meta-data
+122-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\hp\.gradle\caches\transforms-3\9f688067615c3745363766e0ad4df46b\transformed\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:28:13-30:85
+123                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+123-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\hp\.gradle\caches\transforms-3\9f688067615c3745363766e0ad4df46b\transformed\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:29:17-115
+124                android:value="com.google.firebase.components.ComponentRegistrar" />
+124-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\hp\.gradle\caches\transforms-3\9f688067615c3745363766e0ad4df46b\transformed\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:30:17-82
+125            <meta-data
+125-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:77:13-79:85
+126                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+126-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:78:17-109
+127                android:value="com.google.firebase.components.ComponentRegistrar" />
+127-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:79:17-82
+128            <meta-data
+128-->[com.google.firebase:firebase-firestore:23.0.0] C:\Users\hp\.gradle\caches\transforms-3\15e5f7c4266c36fb84d30b10d0de3ea2\transformed\jetified-firebase-firestore-23.0.0\AndroidManifest.xml:20:13-22:85
+129                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+129-->[com.google.firebase:firebase-firestore:23.0.0] C:\Users\hp\.gradle\caches\transforms-3\15e5f7c4266c36fb84d30b10d0de3ea2\transformed\jetified-firebase-firestore-23.0.0\AndroidManifest.xml:21:17-111
+130                android:value="com.google.firebase.components.ComponentRegistrar" />
+130-->[com.google.firebase:firebase-firestore:23.0.0] C:\Users\hp\.gradle\caches\transforms-3\15e5f7c4266c36fb84d30b10d0de3ea2\transformed\jetified-firebase-firestore-23.0.0\AndroidManifest.xml:22:17-82
+131            <meta-data
+131-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\hp\.gradle\caches\transforms-3\e6ae09ea4dd3cb68cc6b96abbf90ef23\transformed\jetified-firebase-installations-17.0.0\AndroidManifest.xml:18:13-20:85
+132                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+132-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\hp\.gradle\caches\transforms-3\e6ae09ea4dd3cb68cc6b96abbf90ef23\transformed\jetified-firebase-installations-17.0.0\AndroidManifest.xml:19:17-127
+133                android:value="com.google.firebase.components.ComponentRegistrar" />
+133-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\hp\.gradle\caches\transforms-3\e6ae09ea4dd3cb68cc6b96abbf90ef23\transformed\jetified-firebase-installations-17.0.0\AndroidManifest.xml:20:17-82
+134        </service>
+135        <service
+135-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:12:9-15:72
+136            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService"
+136-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-107
+137            android:exported="false"
+137-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-37
+138            android:permission="android.permission.BIND_JOB_SERVICE" />
+138-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-69
+139        <service
+139-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:16:9-22:19
+140            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService"
+140-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-97
+141            android:exported="false" >
+141-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:18:13-37
+142            <intent-filter>
+142-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:19:13-21:29
+143                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+143-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:20:17-78
+143-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:20:25-75
+144            </intent-filter>
+145        </service>
+146
+147        <receiver
+147-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:24:9-31:20
+148            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingReceiver"
+148-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:25:13-98
+149            android:exported="true"
+149-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:26:13-36
+150            android:permission="com.google.android.c2dm.permission.SEND" >
+150-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:27:13-73
+151            <intent-filter>
+151-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:28:13-30:29
+152                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+152-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:29:17-81
+152-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:29:25-78
+153            </intent-filter>
+154        </receiver>
+155
+156        <provider
+156-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:39:9-43:38
+157            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider"
+157-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:40:13-102
+158            android:authorities="com.project.covid_app.flutterfirebasemessaginginitprovider"
+158-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:41:13-88
+159            android:exported="false"
+159-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:42:13-37
+160            android:initOrder="99" />
+160-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:43:13-35
+161
+162        <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
+162-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:12:9-106
+162-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:12:19-103
+163        <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver" >
+163-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:13:9-20:20
+163-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:13:19-107
+164            <intent-filter>
+164-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-19:29
+165                <action android:name="android.intent.action.BOOT_COMPLETED" />
+165-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:15:17-79
+165-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:15:25-76
+166                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+166-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-84
+166-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:16:25-81
+167                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+167-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-82
+167-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:17:25-79
+168                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+168-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:18:17-82
+168-->[:flutter_local_notifications] C:\Users\hp\Desktop\covid_app\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:18:25-79
+169            </intent-filter>
+170        </receiver>
+171
+172        <activity
+172-->[:url_launcher] C:\Users\hp\Desktop\covid_app\build\url_launcher\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-11:74
+173            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+173-->[:url_launcher] C:\Users\hp\Desktop\covid_app\build\url_launcher\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-74
+174            android:exported="false"
+174-->[:url_launcher] C:\Users\hp\Desktop\covid_app\build\url_launcher\intermediates\merged_manifest\debug\AndroidManifest.xml:10:13-37
+175            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+175-->[:url_launcher] C:\Users\hp\Desktop\covid_app\build\url_launcher\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-71
+176
+177        <receiver
+177-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-3\e32f30b532181ec7024c331ab6d57307\transformed\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:28:9-35:20
+178            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+178-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-3\e32f30b532181ec7024c331ab6d57307\transformed\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:29:13-78
+179            android:exported="true"
+179-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-3\e32f30b532181ec7024c331ab6d57307\transformed\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:30:13-36
+180            android:permission="com.google.android.c2dm.permission.SEND" >
+180-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-3\e32f30b532181ec7024c331ab6d57307\transformed\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:31:13-73
+181            <intent-filter>
+181-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:28:13-30:29
+182                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+182-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:29:17-81
+182-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:29:25-78
+183            </intent-filter>
+184        </receiver>
+185        <!--
+186             FirebaseMessagingService performs security checks at runtime,
+187             but set to not exported to explicitly avoid allowing another app to call it.
+188        -->
+189        <service
+189-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-3\e32f30b532181ec7024c331ab6d57307\transformed\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:41:9-48:19
+190            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+190-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-3\e32f30b532181ec7024c331ab6d57307\transformed\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:42:13-82
+191            android:directBootAware="true"
+191-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-3\e32f30b532181ec7024c331ab6d57307\transformed\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:43:13-43
+192            android:exported="false" >
+192-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-3\e32f30b532181ec7024c331ab6d57307\transformed\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:44:13-37
+193            <intent-filter android:priority="-500" >
+193-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:19:13-21:29
+194                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+194-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:20:17-78
+194-->[:firebase_messaging] C:\Users\hp\Desktop\covid_app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:20:25-75
+195            </intent-filter>
+196        </service>
+197        <service
+197-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\hp\.gradle\caches\transforms-3\d14de67dd50409cd7dede45f10ed6e6c\transformed\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:29:9-35:19
+198            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+198-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\hp\.gradle\caches\transforms-3\d14de67dd50409cd7dede45f10ed6e6c\transformed\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:30:13-103
+199            android:exported="false" >
+199-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\hp\.gradle\caches\transforms-3\d14de67dd50409cd7dede45f10ed6e6c\transformed\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:31:13-37
+200            <meta-data
+200-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\hp\.gradle\caches\transforms-3\d14de67dd50409cd7dede45f10ed6e6c\transformed\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:32:13-34:39
+201                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+201-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\hp\.gradle\caches\transforms-3\d14de67dd50409cd7dede45f10ed6e6c\transformed\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:33:17-94
+202                android:value="cct" />
+202-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\hp\.gradle\caches\transforms-3\d14de67dd50409cd7dede45f10ed6e6c\transformed\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:34:17-36
+203        </service>
+204
+205        <activity
+205-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:27:9-44:20
+206            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+206-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:28:13-80
+207            android:excludeFromRecents="true"
+207-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:29:13-46
+208            android:exported="true"
+208-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:30:13-36
+209            android:launchMode="singleTask"
+209-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:31:13-44
+210            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+210-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:32:13-72
+211            <intent-filter>
+211-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:33:13-43:29
+212                <action android:name="android.intent.action.VIEW" />
+212-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:10:13-65
+212-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:10:21-62
+213
+214                <category android:name="android.intent.category.DEFAULT" />
+214-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:52:17-76
+214-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:52:27-73
+215                <category android:name="android.intent.category.BROWSABLE" />
+215-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:37:17-78
+215-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:37:27-75
+216
+217                <data
+217-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:7:13-42
+218                    android:host="firebase.auth"
+219                    android:path="/"
+220                    android:scheme="genericidp" />
+220-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:7:19-39
+221            </intent-filter>
+222        </activity>
+223        <activity
+223-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:45:9-62:20
+224            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+224-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:46:13-79
+225            android:excludeFromRecents="true"
+225-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:47:13-46
+226            android:exported="true"
+226-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:48:13-36
+227            android:launchMode="singleTask"
+227-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:49:13-44
+228            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+228-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:50:13-72
+229            <intent-filter>
+229-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:51:13-61:29
+230                <action android:name="android.intent.action.VIEW" />
+230-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:10:13-65
+230-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:10:21-62
+231
+232                <category android:name="android.intent.category.DEFAULT" />
+232-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:52:17-76
+232-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:52:27-73
+233                <category android:name="android.intent.category.BROWSABLE" />
+233-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:37:17-78
+233-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:37:27-75
+234
+235                <data
+235-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:7:13-42
+236                    android:host="firebase.auth"
+237                    android:path="/"
+238                    android:scheme="recaptcha" />
+238-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:7:19-39
+239            </intent-filter>
+240        </activity>
+241
+242        <service
+242-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:64:9-73:19
+243            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
+243-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:65:13-101
+244            android:enabled="true"
+244-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:66:13-35
+245            android:exported="false" >
+245-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:67:13-37
+246            <intent-filter>
+246-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:68:13-72:29
+247                <action android:name="com.google.firebase.auth.api.gms.service.START" />
+247-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:69:17-89
+247-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\hp\.gradle\caches\transforms-3\91eeaef36faea479b71cf899d3362d4c\transformed\jetified-firebase-auth-21.0.1\AndroidManifest.xml:69:25-86
+248
+249                <category android:name="android.intent.category.DEFAULT" />
+249-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:52:17-76
+249-->C:\Users\hp\Desktop\covid_app\android\app\src\main\AndroidManifest.xml:52:27-73
+250            </intent-filter>
+251        </service>
+252
+253        <provider
+253-->[com.google.firebase:firebase-common:20.0.0] C:\Users\hp\.gradle\caches\transforms-3\9ce296fc9f4252fa60c941310742cb9c\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:26:9-31:39
+254            android:name="com.google.firebase.provider.FirebaseInitProvider"
+254-->[com.google.firebase:firebase-common:20.0.0] C:\Users\hp\.gradle\caches\transforms-3\9ce296fc9f4252fa60c941310742cb9c\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:27:13-77
+255            android:authorities="com.project.covid_app.firebaseinitprovider"
+255-->[com.google.firebase:firebase-common:20.0.0] C:\Users\hp\.gradle\caches\transforms-3\9ce296fc9f4252fa60c941310742cb9c\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:28:13-72
+256            android:directBootAware="true"
+256-->[com.google.firebase:firebase-common:20.0.0] C:\Users\hp\.gradle\caches\transforms-3\9ce296fc9f4252fa60c941310742cb9c\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:29:13-43
+257            android:exported="false"
+257-->[com.google.firebase:firebase-common:20.0.0] C:\Users\hp\.gradle\caches\transforms-3\9ce296fc9f4252fa60c941310742cb9c\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:30:13-37
+258            android:initOrder="100" />
+258-->[com.google.firebase:firebase-common:20.0.0] C:\Users\hp\.gradle\caches\transforms-3\9ce296fc9f4252fa60c941310742cb9c\transformed\jetified-firebase-common-20.0.0\AndroidManifest.xml:31:13-36
+259
+260        <activity
+260-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\hp\.gradle\caches\transforms-3\fd4575c3df0a1c02c758f3cd134b0ab4\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+261            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+261-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\hp\.gradle\caches\transforms-3\fd4575c3df0a1c02c758f3cd134b0ab4\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+262            android:exported="false"
+262-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\hp\.gradle\caches\transforms-3\fd4575c3df0a1c02c758f3cd134b0ab4\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+263            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+263-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\hp\.gradle\caches\transforms-3\fd4575c3df0a1c02c758f3cd134b0ab4\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+264
+265        <meta-data
+265-->[com.google.android.gms:play-services-basement:17.1.0] C:\Users\hp\.gradle\caches\transforms-3\eadd8018973cb5990e8d91866eca6280\transformed\jetified-play-services-basement-17.1.0\AndroidManifest.xml:23:9-25:69
+266            android:name="com.google.android.gms.version"
+266-->[com.google.android.gms:play-services-basement:17.1.0] C:\Users\hp\.gradle\caches\transforms-3\eadd8018973cb5990e8d91866eca6280\transformed\jetified-play-services-basement-17.1.0\AndroidManifest.xml:24:13-58
+267            android:value="@integer/google_play_services_version" />
+267-->[com.google.android.gms:play-services-basement:17.1.0] C:\Users\hp\.gradle\caches\transforms-3\eadd8018973cb5990e8d91866eca6280\transformed\jetified-play-services-basement-17.1.0\AndroidManifest.xml:25:13-66
+268
+269        <service
+269-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\hp\.gradle\caches\transforms-3\aa43ee1e889e984fced92da04ac23ec9\transformed\jetified-transport-runtime-3.0.0\AndroidManifest.xml:26:9-30:19
+270            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+270-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\hp\.gradle\caches\transforms-3\aa43ee1e889e984fced92da04ac23ec9\transformed\jetified-transport-runtime-3.0.0\AndroidManifest.xml:27:13-117
+271            android:exported="false"
+271-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\hp\.gradle\caches\transforms-3\aa43ee1e889e984fced92da04ac23ec9\transformed\jetified-transport-runtime-3.0.0\AndroidManifest.xml:28:13-37
+272            android:permission="android.permission.BIND_JOB_SERVICE" >
+272-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\hp\.gradle\caches\transforms-3\aa43ee1e889e984fced92da04ac23ec9\transformed\jetified-transport-runtime-3.0.0\AndroidManifest.xml:29:13-69
+273        </service>
+274
+275        <receiver
+275-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\hp\.gradle\caches\transforms-3\aa43ee1e889e984fced92da04ac23ec9\transformed\jetified-transport-runtime-3.0.0\AndroidManifest.xml:32:9-34:40
+276            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+276-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\hp\.gradle\caches\transforms-3\aa43ee1e889e984fced92da04ac23ec9\transformed\jetified-transport-runtime-3.0.0\AndroidManifest.xml:33:13-132
+277            android:exported="false" />
+277-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\hp\.gradle\caches\transforms-3\aa43ee1e889e984fced92da04ac23ec9\transformed\jetified-transport-runtime-3.0.0\AndroidManifest.xml:34:13-37
+278    </application>
+279
+280</manifest>

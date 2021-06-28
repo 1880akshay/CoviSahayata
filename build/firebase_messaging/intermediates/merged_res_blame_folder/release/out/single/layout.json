@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\Users\\hp\\Desktop\\covid_app\\build\\firebase_messaging\\intermediates\\res\\merged\\release\\layout\\custom_dialog.xml",
+        "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\1e41ab0cde43d530e99ff16c6271d801\\transformed\\core-1.1.0\\res\\layout\\custom_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\hp\\Desktop\\covid_app\\build\\firebase_messaging\\intermediates\\res\\merged\\release\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\1e41ab0cde43d530e99ff16c6271d801\\transformed\\core-1.1.0\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "C:\\Users\\hp\\Desktop\\covid_app\\build\\firebase_messaging\\intermediates\\res\\merged\\release\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\1e41ab0cde43d530e99ff16c6271d801\\transformed\\core-1.1.0\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "C:\\Users\\hp\\Desktop\\covid_app\\build\\firebase_messaging\\intermediates\\res\\merged\\release\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\1e41ab0cde43d530e99ff16c6271d801\\transformed\\core-1.1.0\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\Users\\hp\\Desktop\\covid_app\\build\\firebase_messaging\\intermediates\\res\\merged\\release\\layout\\notification_action.xml",
+        "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\1e41ab0cde43d530e99ff16c6271d801\\transformed\\core-1.1.0\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\hp\\Desktop\\covid_app\\build\\firebase_messaging\\intermediates\\res\\merged\\release\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\1e41ab0cde43d530e99ff16c6271d801\\transformed\\core-1.1.0\\res\\layout\\notification_action_tombstone.xml"
+    }
+]

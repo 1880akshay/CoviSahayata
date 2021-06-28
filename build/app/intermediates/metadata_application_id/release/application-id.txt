@@ -1,0 +1,1 @@
+com.project.covid_app

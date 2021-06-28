@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\hp\\Desktop\\covid_app\\build\\flutter_keyboard_visibility\\intermediates\\res\\merged\\release\\drawable\\notification_tile_bg.xml",
+        "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\bb5408029b9316e92ce8d0d927b702a2\\transformed\\core-1.5.0-rc01\\res\\drawable\\notification_tile_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\hp\\Desktop\\covid_app\\build\\flutter_keyboard_visibility\\intermediates\\res\\merged\\release\\drawable\\notification_bg_low.xml",
+        "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\bb5408029b9316e92ce8d0d927b702a2\\transformed\\core-1.5.0-rc01\\res\\drawable\\notification_bg_low.xml"
+    },
+    {
+        "merged": "C:\\Users\\hp\\Desktop\\covid_app\\build\\flutter_keyboard_visibility\\intermediates\\res\\merged\\release\\drawable\\notification_icon_background.xml",
+        "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\bb5408029b9316e92ce8d0d927b702a2\\transformed\\core-1.5.0-rc01\\res\\drawable\\notification_icon_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\hp\\Desktop\\covid_app\\build\\flutter_keyboard_visibility\\intermediates\\res\\merged\\release\\drawable\\notification_bg.xml",
+        "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\bb5408029b9316e92ce8d0d927b702a2\\transformed\\core-1.5.0-rc01\\res\\drawable\\notification_bg.xml"
+    }
+]

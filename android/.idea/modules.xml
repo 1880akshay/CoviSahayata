@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/142524110/android.cloud_firestore.iml" filepath="$PROJECT_DIR$/.idea/modules/142524110/android.cloud_firestore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-852791863/android.firebase_auth.iml" filepath="$PROJECT_DIR$/.idea/modules/-852791863/android.firebase_auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/234477631/android.firebase_core.iml" filepath="$PROJECT_DIR$/.idea/modules/234477631/android.firebase_core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1513085634/android.firebase_messaging.iml" filepath="$PROJECT_DIR$/.idea/modules/1513085634/android.firebase_messaging.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/594285875/android.flutter_keyboard_visibility.iml" filepath="$PROJECT_DIR$/.idea/modules/594285875/android.flutter_keyboard_visibility.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1244377084/android.flutter_local_notifications.iml" filepath="$PROJECT_DIR$/.idea/modules/-1244377084/android.flutter_local_notifications.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-853195230/android.url_launcher.iml" filepath="$PROJECT_DIR$/.idea/modules/-853195230/android.url_launcher.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Users\\hp\\Desktop\\covid_app\\build\\firebase_core\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\notification_bg_normal.9.png",
+        "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\1e41ab0cde43d530e99ff16c6271d801\\transformed\\core-1.1.0\\res\\drawable-hdpi-v4\\notification_bg_normal.9.png"
+    },
+    {
+        "merged": "C:\\Users\\hp\\Desktop\\covid_app\\build\\firebase_core\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png",
+        "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\1e41ab0cde43d530e99ff16c6271d801\\transformed\\core-1.1.0\\res\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "C:\\Users\\hp\\Desktop\\covid_app\\build\\firebase_core\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\notification_bg_low_normal.9.png",
+        "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\1e41ab0cde43d530e99ff16c6271d801\\transformed\\core-1.1.0\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "C:\\Users\\hp\\Desktop\\covid_app\\build\\firebase_core\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png",
+        "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\1e41ab0cde43d530e99ff16c6271d801\\transformed\\core-1.1.0\\res\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "C:\\Users\\hp\\Desktop\\covid_app\\build\\firebase_core\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png",
+        "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\1e41ab0cde43d530e99ff16c6271d801\\transformed\\core-1.1.0\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
+    }
+]
